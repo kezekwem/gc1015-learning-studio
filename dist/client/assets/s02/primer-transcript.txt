@@ -1,0 +1,39 @@
+AUDIO PRIMER TRANSCRIPT (TTS-READY)
+Course: Quantitative Methods for Business Analysis
+Session: Week 2 - KPIs, variables, grain, chart and data-story critique
+Word Count: 437 words
+================================================================================
+
+Hi there! Welcome to the Primer for Professor Ken Ezekwem's Quantitative Methods for Business Analysis course, Session 2: KPIs, variables, grain, chart and data-story critique. Let us get you ready for class.
+
+Before you open a spreadsheet or build a dashboard, you must answer one foundational question: what does a single row in your table represent? This is known as data grain.
+
+[pause]
+
+In business analytics, a Key Performance Indicator, or K P I, is only as defensible as the grain beneath it. If you do not define your row grain and your eligible denominator, routine calculations can lead to completely false conclusions. Furthermore, descriptive data can tell you what happened, but it cannot prove why it happened. Professional analysts build bounded data stories, meaning every claim stays strictly within what the recorded evidence can prove.
+
+Let us look at our running case, MetroMeal Delivery.
+
+[pause]
+
+Imagine you are analyzing four weeks of operational records covering two thousand completed deliveries. The row grain of your raw table is exactly one eligible completed delivery per row.
+
+In Week 4, MetroMeal recorded five hundred eligible deliveries. Of those, three hundred ninety-two arrived on time. Dividing three hundred ninety-two by five hundred gives an on-time rate of seventy-eight point four percent.
+
+[pause]
+
+Management established an on-time target of at least eighty-five point zero percent. MetroMeal missed this benchmark by six point six percentage points. Notice that we label this difference as percentage points, because we are subtracting two percentage rates directly, rather than calculating a relative percent change.
+
+[pause]
+
+MetroMeal also monitors a customer complaint guardrail, capped at a maximum of three point zero percent. With fourteen complaints out of five hundred deliveries, the complaint rate was two point eight percent. The complaint guardrail passed, but passing a guardrail does not erase the shortfall on your primary delivery K P I.
+
+[pause]
+
+Most importantly, because these delivery records are descriptive, you can recommend investigating dispatch logs and courier shift patterns, but you cannot claim that courier shortages caused the delays. The evidence shows what happened, not why it happened.
+
+To wrap up, remember three core rules. First, always define your data grain and confirm your eligible denominator before calculating any metric. Second, express differences between percentage rates in percentage points. And third, keep your business narrative bounded: never treat descriptive observations as proof of cause and effect.
+
+[pause]
+
+That is your Primer for Professor Ken Ezekwem's Quantitative Methods for Business Analysis course, Session 2. Bring one question and one example of data grain to class. Next, we will discuss Data quality, distributions, descriptive evidence. I will see you in class!

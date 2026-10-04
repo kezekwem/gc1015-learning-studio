@@ -1,0 +1,39 @@
+AUDIO PRIMER TRANSCRIPT (TTS-READY)
+Course: Quantitative Methods for Business Analysis
+Session: Week 4 - Conditional risk, expected value, simulation
+Word Count: 442 words
+================================================================================
+
+Hi there! Welcome to the Primer for Professor Ken Ezekwem's Quantitative Methods for Business Analysis course, Session 4: Conditional risk, expected value, simulation. Let us get you ready for class.
+
+Today, we focus on conditional risk and Bayesian updating.
+
+[pause]
+
+In business, leaders constantly react to diagnostic signals: a fraud alert on a credit card, a surge in support tickets, or a machine maintenance warning. The most common mistake managers make is confusing the sensitivity of an alert with the actual probability of the underlying problem.
+
+[pause]
+
+If eighty percent of customers who cancel their subscriptions had previously logged high support ticket volume, does an account with high support tickets have an eighty percent chance of leaving? The answer is almost always no. Conditional probability shows us how to update baseline risk by restricting our analysis to the specific group of accounts that triggered the signal, while carefully accounting for the larger pool of healthy accounts.
+
+Let us walk through our running case with CloudFlow Analytics.
+
+[pause]
+
+CloudFlow monitors a cohort of one thousand enterprise software accounts. Historically, twelve percent of these accounts churn over a one-year cycle, meaning one hundred twenty accounts leave and eight hundred eighty accounts renew.
+
+[pause]
+
+To catch customer dissatisfaction early, CloudFlow sets an automated screening alert for any account logging more than five support tickets. Among the one hundred twenty accounts that churn, eighty percent trigger this alert, which accounts for ninety-six true distress signals. However, twenty percent of the eight hundred eighty renewing accounts also log high ticket volume because they are actively onboarding new teams, creating one hundred seventy-six false alarms.
+
+[pause]
+
+When an account triggers the alert, what is the updated probability that it will actually churn? We sum the ninety-six churning accounts and the one hundred seventy-six renewing accounts to find a total of two hundred seventy-two flagged accounts. Dividing ninety-six by two hundred seventy-two gives an updated churn risk of thirty-five point twenty-nine percent.
+
+[pause]
+
+The alert nearly triples the baseline risk from twelve percent to over thirty-five percent, but healthy renewers still make up nearly sixty-five percent of all flagged accounts.
+
+Here is the central lesson. A diagnostic signal provides valuable evidence, but it does not equal certainty. Because the healthy base population is so large, false alarms frequently outnumber true distress cases. Effective decision makers evaluate conditional probabilities rather than mistaking an alert for a guaranteed outcome.
+
+That is your Primer for Professor Ken Ezekwem's Quantitative Methods for Business Analysis course, Session 4. Bring one question and one example of conditional risk to class. Next, we will discuss Sampling, bias, confidence intervals, precision. I will see you in class!

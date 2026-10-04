@@ -1,0 +1,31 @@
+AUDIO PRIMER TRANSCRIPT (TTS-READY)
+Course: Quantitative Methods for Business Analysis
+Session: Week 3 - Data quality, distributions, descriptive evidence
+Word Count: 457 words
+================================================================================
+
+Hi there! Welcome to the Primer for Professor Ken Ezekwem's Quantitative Methods for Business Analysis course, Session 3: Data quality, distributions, descriptive evidence. Let us get you ready for class.
+
+[pause]
+
+Our focus today is understanding statistical resistance and how distribution shape guides business decisions. When analyzing operational data, software easily computes an arithmetic mean on numeric columns. However, metrics such as transit times, invoice values, or support durations are often right-skewed, where a few large delays create a long upper tail.
+
+Because the mean includes every value in its sum, extreme coordinates pull the balance point upward. In contrast, the median is a resistant order statistic anchored at the fiftieth percentile rank. Changing values far from the middle often leaves the median stable; it is resistant, not immune to changes in the data. Reporting only the mean on skewed data risks confusing rare outliers with routine performance. Defensible decisions require checking data quality, diagnosing distribution shape, and pairing resistant centers like the median with dispersion measures.
+
+[pause]
+
+Consider our running case where you advise Metro E-Commerce Logistics on regional carrier performance. Management wants to penalize Hub C because its average delivery latency looks high.
+
+Let us inspect the distribution evidence. Screening transaction records shows Hub C has a first quartile of 14.0 minutes, a median of 22.0 minutes, and a third quartile of 31.0 minutes, giving an interquartile range of 17.0 minutes. All three hubs have a median of 22.0 minutes. Hub C has a wider middle spread: 17.0 minutes compared with 7.0 minutes for Hub A and Hub B. Equal medians do not mean equal reliability.
+
+However, Hub C has rare transit bottlenecks reaching 124.0 minutes. Using John Tukey's outlier rule, the upper fence is the third quartile plus 1.5 times the interquartile range, equaling 56.5 minutes. Values beyond 56.5 minutes pull the mean upward, showing additional exposure in the upper tail without identifying its cause.
+
+These summaries do not establish who caused the delays or whether the agreed penalty should apply. A high mean can matter for customer exposure even when the median is stable. A defensible framework reports the resistant median for typical transit time, the interquartile range for core spread, and a ninety-fifth percentile threshold for extreme tail risk.
+
+[pause]
+
+Here are three key takeaways. First, audit data quality, valid denominators, and measurement scales before computing metrics. Second, use the median and interquartile range to evaluate typical performance in skewed distributions. Third, separate baseline throughput from rare tail risk before adjusting contracts.
+
+[pause]
+
+That is your Primer for Professor Ken Ezekwem's Quantitative Methods for Business Analysis course, Session 3. Bring one question and one example of resistant summary measures to class. Next, we will discuss Conditional risk, expected value, simulation. I will see you in class!

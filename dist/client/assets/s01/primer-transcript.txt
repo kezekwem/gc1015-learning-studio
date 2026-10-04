@@ -1,0 +1,39 @@
+AUDIO PRIMER TRANSCRIPT (TTS-READY)
+Course: Quantitative Methods for Business Analysis
+Session: Week 1 - Orientation; readiness; business-question framing
+Word Count: 433 words
+================================================================================
+
+Hi there! Welcome to the Primer for Professor Ken Ezekwem's Quantitative Methods for Business Analysis course, Session 1: Orientation, readiness, and business-question framing. Let us get you ready for class.
+
+[pause]
+
+In this course, we treat quantitative analysis as a disciplined decision process rather than mechanical software computation.
+
+[pause]
+
+Raw data creates genuine organizational value only when empirical evidence systematically reduces uncertainty around a consequential managerial choice. The single most important concept in today's session is deconstructing an ambiguous analytical request into four distinct structural levels: the business problem, the stakeholder decision, the analytical question, and the mechanical software task. Opening Microsoft Excel or IBM SPSS Statistics before establishing the decision owner, the pending action, and the evidence boundary is a tool-first trap that leads to answering the wrong question.
+
+[pause]
+
+To see how this discipline works in practice, let us examine our running case study, OmniRetail, a subscription retailer managing 2.4 million active accounts.
+
+[pause]
+
+Executive leadership observes a 14 percent quarterly increase in cancellations. In response, customer operations proposes spending 450,000 dollars annually to hire 40 weekend customer support representatives, pointing directly to a Monday morning backlog of 4,200 unresolved tickets.
+
+[pause]
+
+However, plausibility is not empirical proof. A large Monday morning queue does not prove that tickets were submitted over the weekend; they could represent Friday carryover, Sunday maintenance alerts, or automated marketing responses. Instead of opening software to run ad-hoc calculations, a disciplined quantitative analyst constructs a bounded analytical question: among active United States monthly subscribers over the trailing twelve months, is an unresolved weekend support ticket associated with a 60-day cancellation rate at least five percentage points higher than resolved weekday tickets?
+
+[pause]
+
+Notice the precommitted five-percentage-point decision threshold. If our statistical analysis later reveals only a 0.3-percentage-point difference, that small difference might achieve statistical significance across millions of records, but it saves only 24,000 dollars in annual subscription revenue. Committing a 450,000-dollar operational budget to recover 24,000 dollars would be an operational disaster.
+
+[pause]
+
+Here are the three key takeaways to remember. First, data never makes decisions; accountable human managers choose actions informed by evidence. Second, always bound your inquiry with explicit populations, exclusions, observation horizons, and precommitted action thresholds before manipulating data. Third, observational records reveal associations, not direct causation, so match your reporting language strictly to your research design.
+
+[pause]
+
+That is your Primer for Professor Ken Ezekwem's Quantitative Methods for Business Analysis course, Session 1. Bring one question and one example of bounded question framing to class. Next, we will discuss KPIs, variables, grain, chart and data-story critique. I will see you in class!

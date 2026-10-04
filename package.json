@@ -1,0 +1,1 @@
+{"name":"gc1015-learning-studio","version":"1.0.0","type":"module","private":true,"engines":{"node":">=22.13.0"},"scripts":{"dev":"node server/dev.mjs","build":"python3 scripts/build.py && python3 scripts/build-services.py","check":"node --test server/worker.test.mjs"}}

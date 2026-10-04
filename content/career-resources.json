@@ -1,0 +1,77 @@
+[
+  {
+    "category": "LinkedIn Learning",
+    "title": "LinkedIn Learning - Statistics Foundations 1: The Basics (36 min)",
+    "url": "https://www.linkedin.com/learning/statistics-foundations-1-the-basics?u=2131553"
+  },
+  {
+    "category": "LinkedIn Learning",
+    "title": "LinkedIn Learning - Excel Statistics Essential Training: 1 (3h 36m)",
+    "url": "https://www.linkedin.com/learning/excel-statistics-essential-training-1-22334537?u=2131553"
+  },
+  {
+    "category": "LinkedIn Learning",
+    "title": "LinkedIn Learning - Excel Statistics Essential Training: 2 (3h 24m)",
+    "url": "https://www.linkedin.com/learning/excel-statistics-essential-training-2-22879835?u=2131553"
+  },
+  {
+    "category": "LinkedIn Learning",
+    "title": "LinkedIn Learning - SPSS: Wrangling, Visualizing, and Modeling Data (5h 52m)",
+    "url": "https://www.linkedin.com/learning/spss-wrangling-visualizing-and-modeling-data?u=2131553"
+  },
+  {
+    "category": "LinkedIn Learning",
+    "title": "LinkedIn Learning - Statistics Foundations Professional Certificate by Wolfram Research (13h 51m)",
+    "url": "https://www.linkedin.com/learning/paths/statistics-foundations-professional-certificate-by-wolfram-research?u=2131553"
+  },
+  {
+    "category": "Excel",
+    "title": "01 - Excel help and learning - Microsoft",
+    "url": "https://support.microsoft.com/en-us/excel/"
+  },
+  {
+    "category": "Excel",
+    "title": "02 - Analysis ToolPak for statistical analysis - Microsoft",
+    "url": "https://support.microsoft.com/en-us/excel/use-the-analysis-toolpak-to-perform-complex-data-analysis"
+  },
+  {
+    "category": "SPSS",
+    "title": "01 - Load and explore your first SPSS dataset - IBM video",
+    "url": "https://mediacenter.ibm.com/media/Loading%2BData%2Band%2BExploring%2BYour%2BFirst%2BDataset/1_k4odgugh"
+  },
+  {
+    "category": "SPSS",
+    "title": "02 - SPSS Statistics Core System User Guide - IBM",
+    "url": "https://www.ibm.com/docs/en/SSLVMB_31.0.0/pdf/IBM_SPSS_Statistics_Core_System_User_Guide.pdf"
+  },
+  {
+    "category": "Python",
+    "title": "01 - Python language tutorial - Python Software Foundation",
+    "url": "https://docs.python.org/3/tutorial/"
+  },
+  {
+    "category": "Python",
+    "title": "02 - pandas data analysis tutorials - pandas",
+    "url": "https://pandas.pydata.org/docs/getting_started/intro_tutorials/"
+  },
+  {
+    "category": "R",
+    "title": "01 - An Introduction to R - R Project",
+    "url": "https://cran.r-project.org/doc/manuals/r-release/R-intro.html"
+  },
+  {
+    "category": "R",
+    "title": "02 - R for Data Science - free online book",
+    "url": "https://r4ds.hadley.nz/"
+  },
+  {
+    "category": "Google Colab & Jupyter Notebooks",
+    "title": "01 - Welcome to Google Colab - guided notebook",
+    "url": "https://colab.research.google.com/notebooks/intro.ipynb"
+  },
+  {
+    "category": "Statistical Foundations & Data Communication",
+    "title": "01 - OpenIntro Statistics - free learning resources",
+    "url": "https://www.openintro.org/book/os/"
+  }
+]

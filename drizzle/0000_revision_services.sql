@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS service_usage (bucket TEXT PRIMARY KEY, calls INTEGER NOT NULL, day TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS translations (id TEXT NOT NULL, language TEXT NOT NULL, value TEXT NOT NULL, PRIMARY KEY(id,language));

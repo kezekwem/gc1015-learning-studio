@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="194.4pt" viewBox="0 0 720 194.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-03T20:45:45.498910</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 194.4 
+L 720 194.4 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 17.28023 176.327798 
+L 181.50012 176.327798 
+L 181.50012 21.840192 
+L 17.28023 21.840192 
+z
+" clip-path="url(#ped889337ab)" style="fill: #f0f4fa; stroke: #57068c; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 195.78011 176.327798 
+L 360 176.327798 
+L 360 21.840192 
+L 195.78011 21.840192 
+z
+" clip-path="url(#ped889337ab)" style="fill: #f0f4fa; stroke: #2166b3; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 374.27999 176.327798 
+L 538.49988 176.327798 
+L 538.49988 21.840192 
+L 374.27999 21.840192 
+z
+" clip-path="url(#ped889337ab)" style="fill: #f0f4fa; stroke: #06756f; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 552.77987 176.327798 
+L 716.99976 176.327798 
+L 716.99976 21.840192 
+L 552.77987 21.840192 
+z
+" clip-path="url(#ped889337ab)" style="fill: #f0f4fa; stroke: #b66716; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #57068c" x="35.130218" y="51.984115" transform="rotate(-0 35.130218 51.984115)">Nominal</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #17243e" x="35.130218" y="100.96799" transform="rotate(-0 35.130218 100.96799)">Same / different</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #17243e" x="35.130218" y="144.29988" transform="rotate(-0 35.130218 144.29988)">web · store · partner</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #2166b3" x="213.630098" y="51.984115" transform="rotate(-0 213.630098 51.984115)">Ordinal</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #17243e" x="213.630098" y="100.96799" transform="rotate(-0 213.630098 100.96799)">Meaningful order</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #17243e" x="213.630098" y="144.29988" transform="rotate(-0 213.630098 144.29988)">low &lt; medium &lt; high</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #06756f" x="392.129978" y="51.984115" transform="rotate(-0 392.129978 51.984115)">Interval</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #17243e" x="392.129978" y="100.96799" transform="rotate(-0 392.129978 100.96799)">Equal differences</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #17243e" x="392.129978" y="144.29988" transform="rotate(-0 392.129978 144.29988)">10°C to 20°C: +10°C</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #b66716" x="570.629858" y="51.984115" transform="rotate(-0 570.629858 51.984115)">Ratio</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #17243e" x="570.629858" y="100.96799" transform="rotate(-0 570.629858 100.96799)">Meaningful ratios</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #17243e" x="570.629858" y="144.29988" transform="rotate(-0 570.629858 144.29988)">10 min to 20 min: ×2</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="ped889337ab">
+   <rect x="3.00024" y="3.00024" width="713.99952" height="188.39952"/>
+  </clipPath>
+ </defs>
+</svg>

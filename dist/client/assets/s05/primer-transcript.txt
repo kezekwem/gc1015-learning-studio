@@ -1,0 +1,47 @@
+AUDIO PRIMER TRANSCRIPT (TTS-READY)
+Course: Quantitative Methods for Business Analysis
+Session: Week 5 - Sampling, bias, confidence intervals, precision
+Word Count: 422 words
+================================================================================
+
+Hi there! Welcome to the Primer for Professor Ken Ezekwem's Quantitative Methods for Business Analysis course, Session 5: Sampling, bias, confidence intervals, precision. Let us get you ready for class.
+
+Today, we focus on the single most critical concept in empirical business analytics: the distinction between estimation precision and sample representativeness.
+
+[pause]
+
+When you calculate a ninety-five percent confidence interval, you are quantifying random sampling error. The margin of error tells you how much a sample statistic would vary across repeated random samples under identical conditions.
+
+[pause]
+
+However, mathematical confidence interval formulas assume your observed sample truly reflects the underlying population. A narrow interval demonstrates high precision, but it cannot repair nonresponse bias or selection bias. If nonrespondents differ systematically from respondents, a large sample size only produces an artificially precise estimate of a biased subpopulation.
+
+Let us explore this through our operational case at Cedar Loop Grocery Pickup.
+
+[pause]
+
+The fulfillment manager audits 2,400 completed pickup orders across four weeks to determine whether slow pickups, defined as wait times exceeding 50 minutes, breach the managerial target of at most 20 percent.
+
+[pause]
+
+An analyst selects a simple random sample of 125 pickup orders. Exactly 100 customers confirm their pickup times, and 24 of them experienced slow handoffs. That produces an observed sample proportion of 24.0 percent.
+
+[pause]
+
+While 24 percent exceeds the 20 percent threshold, leadership should not authorize permanent evening staffing immediately.
+
+[pause]
+
+First, using the 100 responding records, the ninety-five percent confidence interval spans from 15.63 percent to 32.37 percent. Because the 20 percent target falls directly inside this interval, the sample data cannot statistically confirm a performance breach.
+
+[pause]
+
+Second, 25 selected customers never responded. If all 25 unconfirmed pickups were on time, the true slow-pickup rate among the 125 invitees becomes 19.2 percent. If all 25 were delayed, that rate reaches 39.2 percent. Because these sensitivity scenario bounds of 19.2 percent to 39.2 percent straddle the 20 percent target, committing permanent capital before conducting a bounded verification pilot carries serious financial risk.
+
+Here are the key takeaways.
+
+[pause]
+
+First, a confidence interval quantifies random sampling error, not data missingness. Second, always evaluate whether your operational benchmark sits inside the interval boundaries. Third, audit nonresponse sensitivity before making permanent spending commitments.
+
+That is your Primer for Professor Ken Ezekwem's Quantitative Methods for Business Analysis course, Session 5. Bring one question and one example of confidence intervals and nonresponse bias to class. Next, we will discuss Hypothesis tests, effects, practical significance, A/B guardrails. I will see you in class!
