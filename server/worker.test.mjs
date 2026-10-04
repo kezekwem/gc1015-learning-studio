@@ -79,3 +79,10 @@ test('speech requires an unchanged, signed tutor reply',async()=>{
  const r=await worker.fetch(post('speech',{answer:data.answer,language:'en',token:data.speechToken}),env);assert.equal(r.status,200);assert.equal(r.headers.get('Content-Type'),'audio/mpeg');
  globalThis.fetch=realFetch;
 });
+
+test('whole-course accuracy check receives verified MAPS and resource metadata',async()=>{
+ const calls=provider({kind:'course',sessions:[],answer:'Explore MAPS through the Career Toolkit.'});
+ assert.equal((await worker.fetch(post('chat',{message:'How do I join MAPS?'}),environment())).status,200);
+ const check=calls.find(x=>x.body.text?.format.name==='learning_support_check');const input=JSON.parse(check.body.input);
+ assert.equal(input.course.mapsCommunity.email,'sps.maps@nyu.edu');assert(input.course.optionalResources.length===15);assert(input.sourceList.some(x=>x.id==='maps'));
+});
