@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" class="study-page" data-base="/class">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="class-session" content="S03">
+<title>Study mode · Session 03 · GC1015 Class Studio</title>
+<link rel="icon" href="/class/assets/favicon.svg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;700&family=Noto+Sans+SC:wght@400;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap">
+<link rel="stylesheet" href="/class/assets/site.css">
+</head>
+<body>
+<header class="st-bar">
+ <a class="st-back" href="./"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Session 03</a>
+ <div class="st-title"><b>Study mode</b><span>Read the shape of the evidence</span></div>
+ <div class="st-switch" aria-label="Page"><button type="button" data-page="lesson" aria-pressed="false">Lesson</button><button type="button" data-page="lab" aria-pressed="false">Lab</button></div>
+ <label class="st-follow"><input type="checkbox" id="st-follow" checked>Notes follow the lesson</label>
+ <div class="st-tabs" role="tablist" aria-label="View"><button type="button" role="tab" data-pane="notes">Notes</button><button type="button" role="tab" data-pane="practice">Practice</button></div>
+</header>
+<div class="st-main" data-pane="practice">
+ <aside class="st-notes" aria-label="Session notes">
+  <div class="st-notes-head">
+   <div class="st-notes-row"><span class="st-notes-title">Notes</span><select id="st-toc" aria-label="Jump to a section"></select><a class="chip" href="/assets/s03/slides.pdf" target="_blank" rel="noopener"><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8"/></svg>Slides</a></div>
+   <div class="st-here" hidden><span class="st-here-text"></span><span class="st-here-refs"></span>
+    <span class="st-links"><button type="button" class="st-here-notes">Show these notes</button><button type="button" class="st-here-back">Back to the screen</button></span></div>
+  </div>
+  <div class="st-notes-body" tabindex="0"></div>
+ </aside>
+ <div class="st-divider" role="separator" aria-orientation="vertical" aria-label="Resize notes" tabindex="0"></div>
+ <section class="st-practice" aria-label="Practice"><iframe id="st-frame" title="Interactive lesson"></iframe></section>
+</div>
+<script type="application/json" id="study-data">{"session": "S03", "pages": {"lesson": {"src": "lesson.html", "notes": "notes-lesson.json", "title": "Should Metro Penalize Hub C?", "label": "Lesson"}, "lab": {"src": "lab.html", "notes": "notes-lab.json", "title": "LAB01 Checkpoints", "label": "Lab"}}, "slides": "/assets/s03/slides.pdf"}</script>
+<script src="/class/assets/study.js" defer></script>
+</body>
+</html>

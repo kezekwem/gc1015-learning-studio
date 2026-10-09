@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" data-target="public" data-base="/class">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Session 04: Make decisions under uncertainty · GC1015 Class Studio</title>
+<meta name="description" content="Distinguish joint from conditional probability, compare payoffs across states, and inspect risk alongside averages.">
+<link rel="icon" href="/class/assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;700&family=Noto+Sans+SC:wght@400;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap">
+<link rel="stylesheet" href="/class/assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main"><span data-t>Skip to content</span></a>
+<header class="site-header">
+ <div class="wrap head-row">
+  <a class="brand" href="/class/"><span class="brand-mark" aria-hidden="true">Q.</span><span><strong>GC1015 Class Studio</strong><small>NYU SPS · Prof. Ken</small></span></a>
+  <nav class="nav" aria-label="Main"><a class="nav-link" href="/class/"><span data-t>Home</span></a><a class="nav-link on" href="/class/#map" aria-current=page><span data-t>Sessions</span></a><a class="nav-link" href="/class/about.html"><span data-t>About</span></a></nav>
+  <div class="head-tools">
+   <label class="lang" hidden><span class="sr">Language</span><select id="site-lang" aria-label="Language"><option value="en">English</option></select></label>
+   
+  </div>
+ </div>
+</header>
+<main id="main">
+
+<section class="hero s-hero">
+ <div class="wrap hero-grid">
+  <div class="hero-copy">
+   <p class="crumbs"><a href="/class/#map"><span data-t>All sessions</span></a> / <span data-t>Session</span> 04</p>
+   <p class="eyebrow"><span data-t>Session</span> 04 · M03 · <span data-t>Conditional risk, expected value &amp; simulation</span></p>
+   <h1><span data-t>Make decisions under uncertainty</span></h1>
+   <p class="hero-sum"><span data-t>Distinguish joint from conditional probability, compare payoffs across states, and inspect risk alongside averages.</span></p>
+   <p class="hero-tags"><span class="pill light"><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v13c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-13M4.5 12c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8"/></svg><span><span data-t>Case</span>: CloudFlow</span></span><span class="pill lime"><span><span data-t>Badge</span>: <span data-t>Risk navigator</span></span></span></p>
+   <div class="btn-row"><a class="btn orange" href="study.html"><span data-t>Open Study mode</span><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn light" href="lesson.html"><span data-t>Lesson only</span><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+  <aside class="hero-board" aria-label="Your progress">
+   <span class="board-label"><span data-t>Your progress</span></span>
+   <div class="progress"><div class="prow" data-page-id="GC1015-S04-cloudflow-v1" data-graded="25"><span><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l2.4 5.6 6.1.6-4.6 4 1.4 6-5.3-3.2-5.3 3.2 1.4-6-4.6-4 6.1-.6z"/></svg><span data-t>Lesson</span></span><span class="bar"><i></i></span><b class="ptext">0 / 25</b></div><div class="prow" data-page-id="GC1015-S04-lab-v1" data-graded="18"><span><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 3h6M10 3v6.5L4.6 18.4A1.8 1.8 0 0 0 6.2 21h11.6a1.8 1.8 0 0 0 1.6-2.6L14 9.5V3"/><path d="M7.5 15h9"/></svg><span data-t>Lab</span></span><span class="bar"><i></i></span><b class="ptext">0 / 18</b></div></div>
+  </aside>
+ </div>
+ <div class="orbit o1" aria-hidden="true"></div>
+</section>
+<section class="wrap block">
+ <div class="cols">
+  <section class="col col-before" aria-labelledby="col-before"><h3 id="col-before" class="col-head"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="7" rx="1.5"/><rect x="17" y="14" width="4" height="7" rx="1.5"/></svg><span data-t>Before class</span></h3><article class="m-card check" data-check="S04">
+ <div class="m-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg></div>
+ <div class="m-body"><h4><span data-t>Readiness check</span></h4><p><span data-t>Three questions, one minute. Your score suggests a path through the lesson.</span></p>
+ <details class="check-box"><summary class="btn small"><span data-t>Take the check</span></summary>
+ <form class="check-form"><fieldset class="q" data-answer="1"><legend>1. <span data-t>For P(event | positive screen), what is the denominator?</span></legend><label class="opt"><input type="radio" name="q0" value="0"><span><span data-t>All true events</span></span></label><label class="opt"><input type="radio" name="q0" value="1"><span><span data-t>All positive screens</span></span></label><label class="opt"><input type="radio" name="q0" value="2"><span><span data-t>The entire population</span></span></label><p class="fb" data-fb="0" hidden><span data-t>That denominator belongs to sensitivity, P(positive | event).</span></p><p class="fb" data-fb="1" hidden><span data-t>Correct. Conditioning on a positive screen restricts the reference group.</span></p><p class="fb" data-fb="2" hidden><span data-t>The whole population is used for a joint proportion, not this conditional probability.</span></p></fieldset><fieldset class="q" data-answer="1"><legend>2. <span data-t>Does higher expected profit guarantee higher profit next time?</span></legend><label class="opt"><input type="radio" name="q1" value="0"><span><span data-t>Yes</span></span></label><label class="opt"><input type="radio" name="q1" value="1"><span><span data-t>No</span></span></label><label class="opt"><input type="radio" name="q1" value="2"><span><span data-t>Only with a large chart</span></span></label><p class="fb" data-fb="0" hidden><span data-t>Expected value averages across states. One realized state can be worse.</span></p><p class="fb" data-fb="1" hidden><span data-t>Correct. Check downside, assumptions, and decision horizon as well.</span></p><p class="fb" data-fb="2" hidden><span data-t>Display size does not change uncertainty.</span></p></fieldset><fieldset class="q" data-answer="1"><legend>3. <span data-t>What does the fifth percentile of profit mean?</span></legend><label class="opt"><input type="radio" name="q2" value="0"><span><span data-t>A guaranteed profit floor</span></span></label><label class="opt"><input type="radio" name="q2" value="1"><span><span data-t>About 5% of modeled outcomes fall below that cut-off</span></span></label><label class="opt"><input type="radio" name="q2" value="2"><span><span data-t>The average profit</span></span></label><p class="fb" data-fb="0" hidden><span data-t>Some outcomes are worse. It is not a floor.</span></p><p class="fb" data-fb="1" hidden><span data-t>Correct. Describe the model and horizon as well as the percentile.</span></p><p class="fb" data-fb="2" hidden><span data-t>A percentile describes position, not the mean.</span></p></fieldset><button class="btn small" type="submit"><span data-t>Check my answers</span></button></form>
+ <div class="check-result" hidden role="status">
+  <p class="score"></p>
+  <p class="path" data-path="core" hidden><b><span data-t>Core path.</span></b> <span data-t>Start with the primer audio, then the lesson in order. Open the toolkit links whenever a step feels new.</span></p>
+  <p class="path" data-path="bridge" hidden><b><span data-t>Bridge path.</span></b> <span data-t>Work the lesson in order. The Bridge screens connect this idea to what you already know.</span></p>
+  <p class="path" data-path="stretch" hidden><b><span data-t>Stretch path.</span></b> <span data-t>You are ready to push. Aim for first-try answers, then do the Stretch screens and the lab take-home.</span></p>
+ </div></details></div>
+</article><article class="m-card k-audio">
+ <div class="m-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="7" rx="1.5"/><rect x="17" y="14" width="4" height="7" rx="1.5"/></svg></div>
+ <div class="m-body"><h4><span data-t>Primer audio</span></h4><p><span data-t>A short listen that sets up the session&#x27;s question.</span></p><audio controls preload="none" src="/assets/s04/primer.mp3"></audio>
+ <div class="m-actions"><span class="meta">MP3 · 2.8 MB · 3 min</span><a class="chip" href="/assets/s04/primer-transcript.txt"><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span data-t>Transcript</span><small>TXT · 3 KB</small></a></div></div>
+</article><article class="m-card k-map">
+ <div class="m-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="2.6"/><circle cx="4.5" cy="5.5" r="2"/><circle cx="19.5" cy="5.5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="18.5" r="2"/><path d="M6 7l4.2 3.4M18 7l-4.2 3.4M6.6 17.6l3.6-3.6M17.4 17l-3.4-3"/></svg></div>
+ <div class="m-body"><h4><span data-t>Mind map</span></h4><p><span data-t>See how this session&#x27;s ideas connect before you start.</span></p>
+ <div class="m-actions"><a class="btn small" href="/assets/s04/mind-map.pdf"><span data-t>Open</span><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><span class="meta">PDF · 10 KB</span></div></div>
+</article><article class="m-card k-read">
+ <div class="m-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 5h6a3 3 0 0 1 3 3v12a2.5 2.5 0 0 0-2.5-2.5H3z"/><path d="M21 5h-6a3 3 0 0 0-3 3v12a2.5 2.5 0 0 1 2.5-2.5H21z"/></svg></div>
+ <div class="m-body"><h4><span data-t>Blog post</span></h4><p><span data-t>A short read on the idea behind this session.</span></p>
+ <div class="m-actions"><a class="btn small" href="/assets/s04/blog.html"><span data-t>Read</span><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><span class="meta">HTML · 15 KB</span></div></div>
+</article><article class="m-card k-image">
+ <div class="m-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 17l-5.5-5.5L6 20"/></svg></div>
+ <div class="m-body"><h4><span data-t>Infographic reading</span></h4><p><span data-t>The session&#x27;s ideas as a visual walk-through.</span></p>
+ <div class="m-actions"><a class="btn small" href="/assets/s04/infographics-reading.html"><span data-t>Read</span><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><span class="meta">HTML · 25 KB</span></div></div>
+</article><article class="m-card feature k-lesson" data-page-id="GC1015-S04-cloudflow-v1" data-graded="25">
+ <div class="m-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l2.4 5.6 6.1.6-4.6 4 1.4 6-5.3-3.2-5.3 3.2 1.4-6-4.6-4 6.1-.6z"/></svg></div>
+ <div class="m-body"><p class="eyebrow"><span data-t>Interactive lesson</span></p><h4><span data-t>CloudFlow Under Uncertainty</span></h4>
+ <p><span data-t>Drag, slide and decide with the case. Instant feedback, hints and a toolkit one tap away.</span></p>
+ <div class="prow"><span class="bar"><i></i></span><b class="ptext">0 / 25</b></div>
+ <div class="m-actions"><a class="btn orange small" href="study.html"><span data-t>Study with notes</span><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn ghost small" href="lesson.html"><span data-t>Lesson only</span></a><span class="meta">27 <span data-t>screens</span> · <span data-t>about</span> 40 min · 21 Core · 4 Bridge · 2 Stretch</span></div></div>
+</article></section>
+  <section class="col col-in" aria-labelledby="col-in"><h3 id="col-in" class="col-head"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><span data-t>In class</span></h3><article class="m-card k-lab lab-card">
+ <div class="m-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 3h6M10 3v6.5L4.6 18.4A1.8 1.8 0 0 0 6.2 21h11.6a1.8 1.8 0 0 0 1.6-2.6L14 9.5V3"/><path d="M7.5 15h9"/></svg></div>
+ <div class="m-body"><h4><span data-t>Lab</span></h4><ol class="steps"><li><b><span data-t>Read the lab guide</span></b><span class="m-actions"><a class="btn small ghost" href="/assets/s04/lab.html"><span data-t>Open guide</span><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="chip" href="/assets/s04/lab.pdf"><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span data-t>PDF</span><small>PDF · 2.4 MB</small></a></span></li><li><b><span data-t>Do it in Excel and SPSS</span></b><span class="m-actions"><a class="chip" href="/assets/s04/LAB02_Learning_Workbook.xlsx"><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Workbook<small>XLSX · 130 KB</small></a><a class="chip" href="/assets/s04/LAB02_SPSS.sps"><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>SPSS syntax<small>SPS · 11 KB</small></a><a class="chip" href="/assets/s04/cloudflow_churn_cohort.csv"><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>cloudflow_churn_cohort.csv<small>CSV · 13 KB</small></a><a class="chip" href="/assets/s04/reference_trials.csv"><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>reference_trials.csv<small>CSV · 21 KB</small></a><a class="chip" href="/assets/s04/spss-guide.pdf"><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>SPSS guide<small>PDF · 474 KB</small></a><a class="chip strong" href="/assets/s04/student-package.zip"><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span data-t>Everything in one zip</span><small>ZIP · 1.9 MB</small></a></span></li><li data-page-id="GC1015-S04-lab-v1" data-graded="18"><b><span data-t>Check your numbers</span></b><span class="muted"><span data-t>Type the values from your workbook. Each checkpoint tells you if it matches and names the common slip if not.</span></span><div class="prow"><span class="bar"><i></i></span><b class="ptext">0 / 18</b></div><span class="m-actions"><a class="btn small orange" href="lab.html"><span data-t>Open checkpoints</span><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn small ghost" href="study.html?p=lab"><span data-t>With notes</span></a><span class="meta">18 <span data-t>checkpoints</span></span></span></li><li><b><span data-t>Submit</span></b><span class="muted"><span data-t>Follow the lab guide&#x27;s submission note in Brightspace.</span></span></li></ol></div>
+</article><article class="m-card k-slides">
+ <div class="m-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8"/></svg></div>
+ <div class="m-body"><h4><span data-t>Student slides</span></h4><p><span data-t>Follow along in class and revisit the worked examples.</span></p>
+ <div class="m-actions"><a class="btn small" href="/assets/s04/slides.pdf"><span data-t>Open</span><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><span class="meta">PDF · 3.8 MB</span></div></div>
+</article></section>
+  <section class="col col-after" aria-labelledby="col-after"><h3 id="col-after" class="col-head"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12a8 8 0 0 1 13.7-5.7L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.7L4 15.5M4 20v-4.5h4.5"/></svg><span data-t>After class</span></h3><article class="m-card k-toolkit">
+ <div class="m-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 12h18"/></svg></div>
+ <div class="m-body"><h4><span data-t>Session toolkit</span></h4><p><span data-t>Every method from this session with worked examples. Keep it for the exam.</span></p>
+ <div class="m-actions"><a class="btn small" href="/assets/s04/toolkit.html"><span data-t>Open</span><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><span class="meta">HTML · 519 KB</span><a class="chip" href="/assets/s04/toolkit.pdf"><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span data-t>PDF</span><small>PDF · 3.4 MB</small></a></div></div>
+</article><article class="m-card k-toolkit">
+ <div class="m-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 12h18"/></svg></div>
+ <div class="m-body"><h4><span data-t>Concise toolkit</span></h4><p><span data-t>The same methods on fewer pages, for quick review.</span></p>
+ <div class="m-actions"><a class="btn small" href="/assets/s04/toolkit-concise.html"><span data-t>Open</span><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><span class="meta">HTML · 284 KB</span><a class="chip" href="/assets/s04/toolkit-concise.pdf"><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span data-t>PDF</span><small>PDF · 2.0 MB</small></a></div></div>
+</article><article class="m-card k-image">
+ <div class="m-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 17l-5.5-5.5L6 20"/></svg></div>
+ <div class="m-body"><h4><span data-t>Infographic atlas</span></h4><p><span data-t>The session on a few visual pages.</span></p>
+ <div class="m-actions"><a class="btn small" href="/assets/s04/infographics.pdf"><span data-t>Open</span><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><span class="meta">PDF · 2.4 MB</span></div></div>
+</article><article class="m-card k-recall">
+ <div class="m-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12a8 8 0 0 1 13.7-5.7L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.7L4 15.5M4 20v-4.5h4.5"/></svg></div>
+ <div class="m-body"><h4><span data-t>Spaced recall</span></h4><p><span data-t>Retake the readiness check two days after class. Remembering after a gap is what makes it stick.</span></p>
+ <p class="muted recall-state" data-recall="S04"></p></div>
+</article></section>
+ </div>
+</section>
+<section class="wrap block outcomes"><div class="sec-head"><p class="eyebrow"><span data-t>By the end of this session</span></p><h2><span data-t>You can</span></h2></div><ul class="o-list"><li><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-t>Calculate conditional probability with the correct reference group.</span></li><li><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-t>Compare actions using expected value and downside.</span></li><li><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-t>Use simulation as a model-based experiment and test assumptions.</span></li></ul></section>
+<nav class="pager wrap" aria-label="Sessions"><a href="/class/sessions/S03/"><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span><span data-t>Session</span> 03</span></a><a href="/class/sessions/S05/"><span><span data-t>Session</span> 05</span><svg class="ic sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></nav>
+
+</main>
+<footer class="site-footer">
+ <div class="wrap foot-row">
+  <p><strong>MASY1-GC1015</strong> · Quantitative Methods for Business Analysis · Fall 2026</p>
+  <p class="foot-links"><a href="/class/about.html"><span data-t>About Prof. Ken</span></a></p>
+  <p class="ai-note" hidden><span data-t>Translations on this site are AI translations. The English original is the reference for exams.</span></p>
+ </div>
+</footer>
+<script src="/class/assets/site.js" defer></script>
+</body>
+</html>

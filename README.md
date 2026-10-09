@@ -9,6 +9,7 @@ Sessions **01–05** are released. Later sessions appear in gray, with no downlo
 
 ## What students can use
 
+- **Interactive class pages** at [/class/](https://gc1015-learning-studio.kezekwem.chatgpt.site/class/) for Sessions 01 to 06: an interactive lesson per session (drag, slide, decide, instant feedback, t and z table lookups), lab checkpoints that check the numbers students build in their workbook, Study mode with the session notes beside the lesson, readiness checks with spaced recall, and English, Chinese, Spanish and Hindi. Progress stays on the device; no sign-in.
 - Five interactive experiments, fictional practice questions, an optional device-local XP passport, and session stamps. These never affect course grades.
 - Full and concise study toolkits; student laboratory guides, packages, workbooks and SPSS support; full slide PDFs; mind maps; infographics; audio primers and transcripts.
 - An independent Measurement Atlas for optional reference, including beyond the current course coverage.
@@ -60,6 +61,7 @@ npm run check
 - `scripts/build-services.py`: evidence retrieval corpus, public text IDs, HTML translation annotations and `dist/server/index.js`.
 - `content/translations/`: reviewed-for-numeric-integrity shared interface dictionaries. `scripts/pretranslate.py` optionally refreshes them using credentials loaded at runtime from the external path in `COURSE_RUNTIME_ENV`.
 - `dist/client/`: complete public site and all approved student resources.
+- `dist/client/class/`: the interactive class pages, built outside this repository by PRONOIA's `interactive-lesson-builder` (`build_site.py <config> --target public --base /class`). Replace the folder as a whole when rebuilding; do not edit its pages by hand. It contains no answer keys, sign-in, PNP pages or student data. Session 06 materials live in `class/materials/s06/`.
 - `server/worker.js`: moderation, structured question routing, bounded retrieval, grounded answers, a separate learning-support and arithmetic check, translation caching and signed text-to-speech.
 - `server/dev.mjs`: local Worker-compatible preview.
 - `drizzle/`: idempotent database schema; no student data.
