@@ -27,11 +27,26 @@
   }
 
   /* ---------- Language ---------- */
+  // Material cards with language versions: play and open the reader's language, fall back to English.
+  function applyAlternates() {
+    $$('[data-alts]').forEach((card) => {
+      let alts = null;
+      try { alts = JSON.parse(card.dataset.alts); } catch (e) { return; }
+      const pick = alts[lang] || alts.en;
+      const audio = card.querySelector('audio');
+      if (audio && audio.getAttribute('src') !== pick.href && audio.paused) { audio.setAttribute('src', pick.href); audio.load(); }
+      const btn = card.querySelector('.m-actions .btn');
+      if (btn) btn.setAttribute('href', pick.href);
+      const meta = card.querySelector('.m-actions .meta');
+      if (meta) meta.textContent = pick.meta + (alts[lang] && lang !== 'en' ? ' · AI' : '');
+    });
+  }
   function applyLang() {
     $$('[data-t]').forEach((el) => {
       if (el.dataset.en == null) el.dataset.en = el.textContent;
       el.textContent = tr(el.dataset.en);
     });
+    applyAlternates();
     document.documentElement.lang = lang === 'zh' ? 'zh-Hans' : lang;
     $$('.ai-note').forEach((el) => { el.hidden = lang === 'en'; });
   }

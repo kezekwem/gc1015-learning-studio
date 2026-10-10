@@ -1,0 +1,31 @@
+TRANSCRIPCIÓN DE LA INTRODUCCIÓN EN AUDIO (LISTA PARA TTS)
+Curso: Quantitative Methods for Business Analysis
+Sesión: Semana 3 - Calidad de datos, distribuciones, evidencia descriptiva
+Recuento de palabras: 457 palabras
+================================================================================
+
+¡Hola! Te damos la bienvenida a la introducción para el curso Quantitative Methods for Business Analysis del Professor Ken Ezekwem, Sesión 3: Calidad de datos, distribuciones, evidencia descriptiva. Preparémonos para la clase.
+
+[pause]
+
+Hoy nos enfocaremos en comprender la resistencia estadística y cómo la forma de la distribución orienta las decisiones de negocio. Al analizar datos operativos, el software calcula con facilidad la media aritmética en columnas numéricas. Sin embargo, métricas como los tiempos de tránsito, los montos de facturas o la duración del soporte suelen tener asimetría hacia la derecha, donde unos pocos retrasos grandes generan una cola superior larga.
+
+Como la media incluye cada valor en su suma, los puntos extremos jalan el punto de equilibrio hacia arriba. En cambio, la mediana es un estadístico de orden resistente anclado en el percentil 50. Cambiar valores lejanos al centro suele dejar la mediana estable; es resistente, no inmune a los cambios en los datos. Reportar únicamente la media con datos asimétricos corre el riesgo de confundir valores atípicos poco comunes con el desempeño habitual. Las decisiones defendibles exigen verificar la calidad de los datos, diagnosticar la forma de la distribución y combinar centros resistentes como la mediana con medidas de dispersión.
+
+[pause]
+
+Considera nuestro caso continuo en el que asesoras a Metro E-Commerce Logistics sobre el desempeño de transportistas regionales. La gerencia desea penalizar a Hub C porque su latencia promedio de entrega parece alta.
+
+Revisemos la evidencia de la distribución. Examinar los registros de transacciones muestra que Hub C tiene un primer cuartil de 14.0 minutos, una mediana de 22.0 minutos y un tercer cuartil de 31.0 minutos, lo que genera un rango intercuartílico de 17.0 minutos. Los tres hubs tienen una mediana de 22.0 minutos. Hub C tiene una dispersión central más amplia: 17.0 minutos en comparación con 7.0 minutos para Hub A y Hub B. Medianas iguales no significan una confiabilidad igual.
+
+Sin embargo, Hub C presenta cuellos de botella de tránsito poco comunes que alcanzan los 124.0 minutos. Según la regla de valores atípicos de John Tukey, el límite superior es el tercer cuartil más 1.5 veces el rango intercuartílico, lo que equivale a 56.5 minutos. Los valores superiores a 56.5 minutos jalan la media hacia arriba, mostrando una exposición adicional en la cola superior sin identificar su causa.
+
+Estos resúmenes no determinan quién causó los retrasos ni si debe aplicarse la penalización acordada. Una media alta puede ser relevante para la exposición del cliente incluso cuando la mediana es estable. Un marco de trabajo defendible reporta la mediana resistente para el tiempo de tránsito típico, el rango intercuartílico para la dispersión central y un umbral del percentil 95 para el riesgo extremo en la cola.
+
+[pause]
+
+Aquí tienes tres conclusiones clave. Primero, audita la calidad de los datos, los denominadores válidos y las escalas de medición antes de calcular métricas. Segundo, utiliza la mediana y el rango intercuartílico para evaluar el desempeño típico en distribuciones asimétricas. Tercero, separa el rendimiento base del riesgo extremo poco común antes de ajustar los contratos.
+
+[pause]
+
+Esa es tu introducción para el curso Quantitative Methods for Business Analysis del Professor Ken Ezekwem, Sesión 3. Trae a clase una pregunta y un ejemplo de medidas de resumen resistentes. En la próxima sesión, analizaremos riesgo condicional, valor esperado y simulación. ¡Nos vemos en clase!

@@ -380,3 +380,8 @@ html.study-page, .study-page body { height: 100%; }
   .st-here-back { display: inline-block; }
   .st-title span { display: none; }
 }
+
+/* Language versions on material cards and in Study mode */
+.m-langs { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 2px; }
+.lang-chip { font-size: 12.5px; padding: 4px 9px; }
+.st-ai { font-size: 12px; color: var(--muted); margin: 0; }

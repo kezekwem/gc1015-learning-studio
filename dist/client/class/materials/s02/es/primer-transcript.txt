@@ -1,0 +1,39 @@
+TRANSCRIPCIÓN DE LA INTRODUCCIÓN EN AUDIO (LISTA PARA TTS)
+Curso: Quantitative Methods for Business Analysis
+Sesión: Semana 2 - KPI, variables, granularidad, crítica de gráficos e historias de datos
+Recuento de palabras: 437 palabras
+================================================================================
+
+¡Hola! Te damos la bienvenida a la introducción para el curso Quantitative Methods for Business Analysis del Professor Ken Ezekwem, Sesión 2: KPI, variables, granularidad, crítica de gráficos e historias de datos. Preparémonos para la clase.
+
+Antes de abrir una hoja de cálculo o crear un panel de control, debes responder a una pregunta fundamental: ¿qué representa una sola fila de tu tabla? Esto se conoce como granularidad de los datos.
+
+[pause]
+
+En analítica de negocios, un indicador clave de rendimiento, o KPI, solo es tan defendible como la granularidad que lo sustenta. Si no defines la granularidad de tus filas y tu denominador admisible, los cálculos de rutina pueden llevar a conclusiones completamente falsas. Además, los datos descriptivos pueden decirte qué ocurrió, pero no pueden demostrar por qué ocurrió. Los analistas profesionales construyen historias de datos delimitadas, lo que significa que cada afirmación se mantiene estrictamente dentro de lo que la evidencia registrada puede probar.
+
+Veamos nuestro caso continuo, MetroMeal Delivery.
+
+[pause]
+
+Imagina que estás analizando cuatro semanas de registros operativos que cubren dos mil entregas completadas. La granularidad de fila de tu tabla sin procesar es exactamente una entrega admisible completada por fila.
+
+En la Semana 4, MetroMeal registró quinientas entregas admisibles. De esas, trescientas noventa y dos llegaron a tiempo. Dividir trescientas noventa y dos entre quinientas da una tasa de entregas a tiempo del setenta y ocho punto cuatro por ciento.
+
+[pause]
+
+La gerencia estableció un objetivo de entregas a tiempo de al menos el ochenta y cinco punto cero por ciento. MetroMeal no alcanzó este punto de referencia por seis punto seis puntos porcentuales. Observa que denominamos esta diferencia como puntos porcentuales, porque estamos restando dos tasas porcentuales directamente, en lugar de calcular un cambio porcentual relativo.
+
+[pause]
+
+MetroMeal también supervisa un límite de seguridad de quejas de clientes, con un tope máximo del tres punto cero por ciento. Con catorce quejas de quinientas entregas, la tasa de quejas fue del dos punto ocho por ciento. Se cumplió con el límite de seguridad de quejas, pero cumplirlo no borra el déficit en tu KPI principal de entregas.
+
+[pause]
+
+Lo más importante es que, como estos registros de entrega son descriptivos, puedes recomendar investigar los registros de despacho y los patrones de turnos de los repartidores, pero no puedes afirmar que la escasez de repartidores causó los retrasos. La evidencia muestra qué sucedió, no por qué sucedió.
+
+Para terminar, recuerda tres reglas fundamentales. Primero, define siempre la granularidad de tus datos y confirma tu denominador admisible antes de calcular cualquier métrica. Segundo, expresa las diferencias entre tasas porcentuales en puntos porcentuales. Y tercero, mantén delimitada tu narrativa de negocio: nunca trates las observaciones descriptivas como prueba de causa y efecto.
+
+[pause]
+
+Esa es la introducción para el curso Quantitative Methods for Business Analysis del Professor Ken Ezekwem, Sesión 2. Trae a clase una pregunta y un ejemplo de granularidad de datos. Luego, analizaremos la calidad de los datos, las distribuciones y la evidencia descriptiva. ¡Nos vemos en clase!

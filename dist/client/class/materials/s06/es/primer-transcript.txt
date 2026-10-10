@@ -1,0 +1,29 @@
+TRANSCRIPCIÓN DEL AUDIO INTRODUCTORIO (LISTA PARA TTS)
+Curso: Quantitative Methods for Business Analysis
+Sesión: Semana 6: Pruebas de hipótesis, efectos, significancia práctica y salvaguardas de A B
+Recuento de palabras: 441 palabras
+================================================================================
+
+¡Hola! Te damos la bienvenida a la introducción para la Sesión 6 del curso Quantitative Methods for Business Analysis del Professor Ken Ezekwem: Pruebas de hipótesis, efectos, significancia práctica y salvaguardas de A B. Vamos a prepararte para la clase.
+
+En la analítica de negocios, un error muy común es considerar que un valor p estadísticamente significativo es una luz verde automática para lanzar un producto.
+
+[pause]
+
+No lo es. La significancia estadística solo muestra que es poco probable que una diferencia muestral observada se deba únicamente al azar. No demuestra que una mejora cubra los costos operativos, ni garantiza que el cambio no perjudique a otras funciones de la empresa.
+
+Tomar decisiones de lanzamiento acertadas exige dos criterios adicionales: umbrales de significancia práctica y métricas de salvaguarda operativa. Un umbral de significancia práctica define la mejora mínima en tu métrica principal para justificar los costos de implementación. Una métrica de salvaguarda fija un límite estricto para el perjuicio aceptable en resultados operativos secundarios, como quejas de clientes o latencia de la aplicación. Si una nueva función supera una salvaguarda operativa, el lanzamiento se detiene de inmediato, sin importar lo pequeño que sea el valor p.
+
+Analicemos este proceso de decisión con CedarCart, una aplicación móvil de comercio minorista.
+
+[pause]
+
+CedarCart realizó una prueba A B aleatorizada para comparar un flujo de compra simplificado, Variant B, frente a su flujo estándar, Variant A. El experimento asignó 400 compradores únicos a cada grupo, sumando 800 usuarios en total. La dirección estableció de antemano tres reglas de decisión explícitas: una prueba bilateral con alfa igual a 0.05, un requisito práctico de al menos 8 puntos porcentuales de aumento en la conversión de compra, y una salvaguarda operativa que indicaba que las quejas de clientes no debían subir más de 1 punto porcentual.
+
+Variant A tuvo una conversión del 40 por ciento con una tasa de quejas del 2 por ciento. Variant B tuvo una conversión del 50 por ciento con una tasa de quejas del 8 por ciento.
+
+La ganancia de 10 puntos porcentuales en la conversión generó un valor p de 0.0045, lo que permitió rechazar la hipótesis nula de igual conversión. Sin embargo, el intervalo de confianza del 95 por ciento para el aumento de compras osciló entre 3.14 y 16.86 puntos porcentuales. Como hay valores verosímiles por debajo de 8 puntos porcentuales, los datos no aseguran que la mejora poblacional real cumpla el objetivo comercial. Además, la tasa de quejas aumentó 6 puntos porcentuales, superando con creces la salvaguarda de 1 punto porcentual.
+
+En términos financieros, 40 compras adicionales aportaron 480 dólares de margen bruto. Sin embargo, 240 dólares en costos de implementación y 600 dólares en resolución de reclamos generaron una pérdida neta de 360 dólares por cada 400 usuarios. La decisión correcta fue pausar Variant B para su revisión.
+
+Esta es tu introducción para la Sesión 6 del curso Quantitative Methods for Business Analysis del Professor Ken Ezekwem. Lleva a clase una pregunta y un ejemplo de significancia práctica y métricas de salvaguarda. En la próxima sesión analizaremos Midterm Decision Analysis. ¡Nos vemos en clase!

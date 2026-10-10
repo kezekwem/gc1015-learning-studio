@@ -26,6 +26,8 @@
   const frame = $('#st-frame'), body = $('.st-notes-body'), toc = $('#st-toc'), here = $('.st-here'), main = $('.st-main');
   let page = data.pages[new URLSearchParams(location.search).get('p')] ? new URLSearchParams(location.search).get('p') : Object.keys(data.pages)[0];
   let notes = null, current = null, follow = store.get('study:follow') !== 'off', userScrollAt = 0, autoScrolling = false;
+  let notesEnglish = store.get('study:notes-en') === '1';
+  const readerLang = () => store.get('lessonkit:lang') || 'en';
 
   /* ---------- Layout: split, mobile panes ---------- */
   const narrow = () => matchMedia('(max-width: 900px)').matches;
@@ -142,6 +144,28 @@
   $('.st-here-notes').addEventListener('click', () => { if (current && current.refs[0]) { userScrollAt = 0; reveal(current.refs[0], true); } });
   toc.addEventListener('change', () => { if (toc.value) { userScrollAt = Date.now(); reveal(toc.value, true); toc.value = ''; } });
 
+  /* ---------- Notes language: translated notes when they exist, English on request ---------- */
+  const langBtn = document.getElementById('st-notes-lang');
+  async function fetchJson(url) { try { const r = await fetch(url, { cache: 'no-cache' }); return r.ok ? await r.json() : null; } catch (e) { return null; } }
+  async function loadNotes() {
+    const cfg = data.pages[page];
+    const lang = readerLang();
+    let translated = null;
+    if (lang !== 'en') translated = await fetchJson(cfg.notes.replace(/\.json$/, `.${lang}.json`));
+    const english = await fetchJson(cfg.notes);
+    notes = translated && !notesEnglish ? translated : english;
+    if (langBtn) {
+      langBtn.hidden = !translated;
+      langBtn.textContent = notesEnglish ? (translated && translated.lang ? { zh: '中文', es: 'Español', hi: 'हिन्दी' }[translated.lang] || translated.lang : '') : 'English';
+      langBtn.title = notesEnglish ? 'Show the AI translation' : 'Show the English original';
+    }
+    const note = document.querySelector('.st-ai');
+    if (note) { note.hidden = !(translated && !notesEnglish); note.textContent = translated && translated.label ? translated.label : ''; }
+    render();
+  }
+  if (langBtn) langBtn.addEventListener('click', () => { notesEnglish = !notesEnglish; store.set('study:notes-en', notesEnglish ? '1' : '0'); loadNotes(); });
+  window.addEventListener('storage', (e) => { if (e.key === 'lessonkit:lang') loadNotes(); });
+
   /* ---------- Lesson / lab switch ---------- */
   async function load(p) {
     page = p;
@@ -151,8 +175,7 @@
     current = null; here.hidden = true;
     frame.src = `${cfg.src}?embed=study`;
     frame.title = cfg.title;
-    try { const r = await fetch(cfg.notes, { cache: 'no-cache' }); notes = r.ok ? await r.json() : null; } catch (e) { notes = null; }
-    render();
+    await loadNotes();
   }
   $$('.st-switch button').forEach((b) => b.addEventListener('click', () => { if (b.dataset.page !== page) load(b.dataset.page); }));
   window.addEventListener('storage', (e) => { if (notes && e.key === `lessonkit:${notes.lesson}`) updateDone(); });
