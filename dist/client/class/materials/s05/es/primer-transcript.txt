@@ -1,0 +1,47 @@
+TRANSCRIPCIÓN DE INTRODUCCIÓN EN AUDIO (LISTA PARA TTS)
+Curso: Quantitative Methods for Business Analysis
+Sesión: Semana 5 - Muestreo, sesgo, intervalos de confianza, precisión
+Recuento de palabras: 422 palabras
+================================================================================
+
+¡Hola! Te damos la bienvenida a la introducción para el curso Quantitative Methods for Business Analysis del Professor Ken Ezekwem, Sesión 5: Muestreo, sesgo, intervalos de confianza, precisión. Vamos a prepararte para la clase.
+
+Hoy nos enfocamos en el concepto más importante de la analítica empresarial empírica: la diferencia entre la precisión de la estimación y la representatividad de la muestra.
+
+[pause]
+
+Cuando calculas un intervalo de confianza del noventa y cinco por ciento, estás cuantificando el error de muestreo aleatorio. El margen de error te indica cuánto variaría un estadístico muestral a través de repetidas muestras aleatorias bajo condiciones idénticas.
+
+[pause]
+
+Sin embargo, las fórmulas matemáticas del intervalo de confianza asumen que la muestra observada refleja verdaderamente a la población subyacente. Un intervalo estrecho demuestra alta precisión, pero no puede corregir el sesgo de no respuesta ni el sesgo de selección. Si quienes no responden difieren sistemáticamente de quienes sí responden, un tamaño de muestra grande solo produce una estimación artificialmente precisa de una subpoblación sesgada.
+
+Exploremos esto con nuestro caso operativo en Cedar Loop Grocery Pickup.
+
+[pause]
+
+El gerente de cumplimiento audita 2,400 órdenes completadas de recolección a lo largo de cuatro semanas. Quiere determinar si las recolecciones lentas, definidas como tiempos de espera superiores a 50 minutos, superan el objetivo gerencial de como máximo el 20 por ciento.
+
+[pause]
+
+Un analista selecciona una muestra aleatoria simple de 125 órdenes de recolección. Exactamente 100 clientes confirman sus tiempos de recolección, y 24 de ellos experimentaron entregas lentas. Eso produce una proporción muestral observada del 24.0 por ciento.
+
+[pause]
+
+Aunque el 24 por ciento supera el umbral del 20 por ciento, el liderazgo no debería autorizar personal vespertino permanente de inmediato.
+
+[pause]
+
+Primero, usando los 100 registros con respuesta, el intervalo de confianza del noventa y cinco por ciento va del 15.63 por ciento al 32.37 por ciento. Dado que el objetivo del 20 por ciento cae directamente dentro de este intervalo, los datos de la muestra no pueden confirmar estadísticamente un incumplimiento del rendimiento.
+
+[pause]
+
+Segundo, 25 clientes seleccionados nunca respondieron. Si las 25 recolecciones no confirmadas hubieran sido a tiempo, la verdadera tasa de recolecciones lentas entre los 125 invitados sería del 19.2 por ciento. Si las 25 sufrieron demoras, esa tasa alcanzaría el 39.2 por ciento. Como los límites de este análisis de sensibilidad, del 19.2 por ciento al 39.2 por ciento, abarcan ambos lados del objetivo del 20 por ciento, comprometer capital permanente antes de realizar una prueba piloto de verificación acotada implica un serio riesgo financiero.
+
+Aquí están los puntos clave.
+
+[pause]
+
+Primero, un intervalo de confianza cuantifica el error de muestreo aleatorio, no la ausencia de datos. Segundo, siempre evalúa si tu referencia operativa se encuentra dentro de los límites del intervalo. Tercero, audita la sensibilidad a la no respuesta antes de asumir compromisos de gasto permanentes.
+
+Esa es la introducción para la Sesión 5 del curso Quantitative Methods for Business Analysis con el Professor Ken Ezekwem. Trae a clase una pregunta y un ejemplo sobre intervalos de confianza y sesgo de no respuesta. En la próxima sesión analizaremos pruebas de hipótesis, efectos, significancia práctica y directrices de control para A/B testing. ¡Nos vemos en clase!

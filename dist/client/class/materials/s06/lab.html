@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>S06P Lab Guide</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"><style>
+:root{--violet:#57068c;--violet-bg:#f3ecf9;--violet-line:#d9c6ea;--ink:#1d1a22;--muted:#5c5566;--line:#e4e0ea;--bg:#fff;--panel:#faf9fc;
+--yellow:#fff4c2;--yellow-line:#e8d27a;--lav:#ece4f6;--ok:#1f7a4d;--ok-bg:#e6f4ec;--warn:#9a4a00;--warn-bg:#fff1e3;--mail:#fdfcf8;--mail-line:#e7e1cf;
+--mono:"JetBrains Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--violet:#c79bef;--violet-bg:#2a2035;--violet-line:#4a3a5c;--ink:#ece8f2;--muted:#a79fb3;--line:#342d3d;--bg:#17141b;--panel:#1f1b25;--yellow:#3d3515;--yellow-line:#6b5c22;--lav:#2c2438;--ok:#6fd39f;--ok-bg:#16301f;--warn:#f0a867;--warn-bg:#35240f;--mail:#1d1a16;--mail-line:#3d372b}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15.5px/1.55 Inter,system-ui,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:24px 16px 80px}code{font-family:var(--mono);font-size:.88em;background:var(--lav);padding:1px 5px;border-radius:4px}
+a{color:var(--violet)}code,pre{font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+.katex-display{display:block;text-align:center}.katex-display>.katex{display:block;text-align:center}
+math[display="block"]{display:block math;margin:.5em auto;text-align:center}pre code{background:none;padding:0;border:0}.katex{font-size:1.06em}:not(.katex-display)>.katex{display:inline-block}.katex-display{margin:.6em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0}
+header.hero{background:linear-gradient(120deg,#57068c,#8a3fc4);color:#fff;border-radius:12px;padding:22px 24px}
+header.hero .kicker{font-size:13px;letter-spacing:.06em;text-transform:uppercase;opacity:.85}header.hero h1{margin:4px 0 8px;font-size:26px;line-height:1.2}header.hero p{margin:0}
+h2{font-size:20px;margin:34px 0 10px;color:var(--violet)}.card{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:18px 20px;margin:14px 0}
+.mail{border:1px solid var(--mail-line);background:var(--mail);border-radius:12px;overflow:hidden;margin:14px 0}
+.mail-subject{padding:14px 22px 4px;font-weight:700;font-size:18px}.subj-k{font-weight:500;color:var(--muted);font-size:14px;margin-right:4px}
+.mail-head{padding:8px 22px 14px;border-bottom:1px solid var(--mail-line);display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start;font-size:14px}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--violet);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px}
+.meta{color:var(--muted);font-size:13px}.flag{font-size:12.5px;font-weight:600;color:var(--warn);background:var(--warn-bg);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.mail-body{padding:18px 22px 20px}.mail-body p{margin:0 0 12px}
+.asks{list-style:none;padding:0;margin:4px 0 14px 28px;border-left:3px solid var(--mail-line)}.asks li{display:grid;grid-template-columns:1fr auto;gap:4px 14px;padding:8px 0 8px 16px}
+.asks .q b{display:block}.asks .d{padding-left:20px;margin-top:2px}.asks .go{align-self:start;text-decoration:none}.deliver{margin:0 0 12px 28px;padding-left:18px}
+.attach{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;padding-top:12px;border-top:1px dashed var(--mail-line);font-size:13px}.attach span{border:1px solid var(--mail-line);border-radius:6px;padding:3px 8px;font-family:var(--mono);font-size:12.5px}
+.route{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin:14px 0}
+.stop{border:1px solid var(--violet);box-shadow:0 0 0 2px var(--violet-bg);border-radius:10px;padding:10px;background:var(--bg);text-decoration:none;color:var(--ink);display:block}
+.stop .t{font-weight:700;font-size:14px}.stop .m{font-size:12.5px;color:var(--muted)}.stop .min{font-family:var(--mono);font-size:12px;color:var(--violet)}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:8px 0}ol.steps>li{counter-increment:s;position:relative;padding:10px 0 10px 44px;border-top:1px solid var(--line)}ol.steps>li:first-child{border-top:0}
+ol.steps>li::before{content:counter(s);position:absolute;left:0;top:9px;width:30px;height:30px;border-radius:50%;background:var(--violet);color:#fff;font-weight:700;display:grid;place-items:center;font-size:14px}
+.steps .what{font-weight:600}.steps .sub{color:var(--muted);font-size:14px;margin-top:2px}
+.done{background:var(--ok-bg);color:var(--ok);border-radius:10px;padding:12px 14px;margin-top:12px;font-weight:500}.warn{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:12px 14px;margin-top:10px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;margin-top:8px}.sw{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:5px;border:1px solid var(--line)}
+.part{border:2px solid var(--violet);border-radius:14px;overflow:hidden;margin:16px 0;background:var(--bg)}
+.part-head{background:var(--violet-bg);padding:14px 20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--violet-line)}
+.part-head h3{margin:0;font-size:21px}.plabel{color:var(--violet)}.part-head .tag{font-size:13px;color:var(--muted)}
+.timer{font-family:var(--mono);background:var(--violet);color:#fff;border-radius:999px;padding:4px 12px;font-size:14px;white-space:nowrap}
+.handoff{display:flex;gap:8px;align-items:center;font-size:14px;padding:10px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.pill{border:1px solid var(--violet-line);border-radius:999px;padding:2px 10px;font-weight:600;color:var(--violet);font-size:13px;white-space:nowrap}
+.part-body{padding:6px 20px 18px}.part-body h4{margin:18px 0 6px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.recap{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:14px 16px;margin-top:6px}.recap p{margin:0 0 8px}.recap ul{margin:4px 0 6px;padding-left:18px}.recap li{margin:4px 0}
+.refs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.ref{border:1px solid var(--violet-line);border-radius:8px;padding:8px 10px;background:var(--bg);font-size:13px}
+.ref .src{font-weight:700;color:var(--violet);font-size:12px;letter-spacing:.04em;text-transform:uppercase}.ref .pg{font-family:var(--mono);font-size:13px;margin:2px 0}.ref .why{color:var(--muted);font-size:12.5px;line-height:1.4}
+@media (max-width:640px){.refs{grid-template-columns:1fr}}
+.keyeq{border:2px solid var(--violet-line);border-radius:10px;padding:6px 16px 10px;margin-top:10px;background:var(--bg)}.keyeq .lbl{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--violet);margin-top:8px}
+.notation{font-size:13.5px;color:var(--muted);margin-top:2px}
+table.fx{width:100%;border-collapse:collapse;font-size:14.5px}table.fx th{text-align:left;font-size:12.5px;color:var(--muted);font-weight:600;padding:6px 8px;border-bottom:1px solid var(--line)}
+table.fx td{padding:8px;border-bottom:1px solid var(--line);vertical-align:middle}table.fx td.n,table.fx th.n{width:34px;text-align:center;padding-left:4px;padding-right:4px}table.fx td.n{font-weight:700;color:var(--violet);vertical-align:middle}
+table.fx tr.tot td.cell,table.fx tr.tot td.exp,table.fx tr.tot td.m .plain{font-weight:700}table.fx tr.tot td.f code{font-weight:700}
+table.fx td.cell{font-family:var(--mono);font-size:13.5px;white-space:nowrap}table.fx td.f code{background:var(--yellow);border:1px solid var(--yellow-line);white-space:normal;word-break:break-word}
+table.fx td.exp{font-family:var(--mono);font-size:13px;color:var(--ok);white-space:nowrap;text-align:right}table.fx .fill,table.fx .plain{font-size:12.5px;color:var(--muted)}
+.tablewrap{overflow-x:auto}
+details{border:1px solid var(--line);border-radius:10px;padding:0 14px;margin-top:10px;background:var(--panel)}details summary{cursor:pointer;padding:10px 0;font-weight:600}
+details[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}details ul{margin:6px 0 12px;padding-left:20px}
+.stub{border:1px dashed var(--line);border-radius:12px;padding:12px 18px;color:var(--muted);margin:10px 0}
+.namer{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.namer label{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:3px}
+.namer input{font:inherit;font-size:15px;padding:6px 9px;border:1px solid var(--violet-line);border-radius:7px;background:var(--bg);color:var(--ink)}@media (max-width:560px){.namer{grid-template-columns:1fr}}
+code.fn{white-space:normal;word-break:normal}.checkwrap{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media (max-width:720px){.checkwrap{grid-template-columns:1fr}}
+.cgroup{border:1px solid var(--line);border-radius:10px;padding:6px 12px 8px;margin:0;background:var(--panel);min-width:0}.cgroup legend{font-weight:700;color:var(--violet);font-size:13.5px;padding:0 6px}
+.citem{display:grid;grid-template-columns:22px 1fr;gap:6px;padding:5px 0;font-size:14px;cursor:pointer;border-top:1px solid var(--line)}.citem:first-of-type{border-top:0}
+.citem input{margin-top:4px;accent-color:var(--violet);width:16px;height:16px}.citem input:checked+span{color:var(--muted);text-decoration:line-through}
+.cprog{font-family:var(--mono);font-size:12px;text-transform:none;letter-spacing:0;color:var(--ok);margin-left:8px}
+table.rubric td{vertical-align:top}table.rubric td.pts{text-align:right;font-family:var(--mono);font-weight:600;color:var(--violet)}table.rubric td.where{font-size:13.5px;color:var(--muted)}
+.bar{height:8px;background:var(--lav);border-radius:4px;overflow:hidden;margin-top:7px}.bar span{display:block;height:100%;background:var(--violet)}
+.memo{border:1px solid var(--line);background:var(--bg);border-radius:6px;padding:26px 30px;box-shadow:0 2px 10px rgba(0,0,0,.06);font-size:14.5px}
+.memo-head{border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:14px;line-height:1.8}.memo-head .k{font-weight:700;display:inline-block;width:72px}
+.memo-secs{padding-left:20px;margin:0}.memo-secs>li{margin:0 0 14px}.memo-secs p{margin:4px 0 0}.len{font-size:12px;color:var(--muted);margin-left:6px}.ph{color:var(--muted);font-style:italic}
+table.ev{width:100%;border-collapse:collapse;margin-top:6px;font-size:13px}table.ev th,table.ev td{border:1px solid var(--line);padding:5px 7px;text-align:left}
+.memo-foot{border-top:1px solid var(--line);padding-top:10px;margin-top:6px;font-size:13.5px}
+.btn{font:inherit;font-weight:600;border:1px solid var(--violet);background:var(--violet-bg);color:var(--violet);border-radius:8px;padding:6px 14px;cursor:pointer}
+.act{border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0;background:var(--panel)}.act .hd{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+h3.topic{font-size:17px;margin:22px 0 4px;color:var(--violet)}h3.topic .lvl{font-size:11.5px;vertical-align:middle}
+.tool{font-size:12px;font-weight:700;border-radius:999px;padding:2px 9px;background:var(--violet);color:#fff}.lvl{font-size:12px;border:1px solid var(--violet-line);border-radius:999px;padding:1px 8px;color:var(--violet)}
+pre.spss .cm{color:var(--ok);font-style:italic}pre.spss{white-space:pre-wrap}
+pre{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--violet);border-radius:8px;padding:12px 14px;overflow-x:auto;font:12.5px/1.5 var(--mono);white-space:pre}
+footer{margin-top:40px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+.layout{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1200px;margin:0 auto}.layout .wrap{margin:0;max-width:920px}
+.outline{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;padding:24px 10px 24px 16px;border-right:1px solid var(--line);font-size:13.5px}
+.ol-title{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 10px 8px}
+.outline ul{list-style:none;margin:0;padding:0}.outline li{margin:1px 0}.outline ul ul{margin:2px 0 6px 10px;border-left:2px solid var(--line);padding-left:6px}
+.outline a{display:block;padding:5px 8px;border-radius:7px;color:var(--ink);text-decoration:none;line-height:1.35}.outline ul ul a{font-size:12.5px;color:var(--muted)}
+.outline a:hover{background:var(--violet-bg);color:var(--violet)}.outline a.active{background:var(--violet-bg);color:var(--violet);font-weight:600}
+.print-toc{display:none}html{scroll-behavior:smooth}[id]{scroll-margin-top:12px}
+@media (max-width:900px){.layout{display:block}.outline{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:12px 16px}
+.outline nav>ul{display:flex;flex-wrap:wrap;gap:4px}.outline nav>ul>li>ul{display:none}.outline a{border:1px solid var(--line);padding:3px 9px;border-radius:999px;font-size:12.5px}}
+@page{size:Letter;margin:13mm 13mm 15mm}
+.where2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:6px 0}.where2 .os{border:1px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--panel)}.where2 .os>b{color:var(--violet)}.where2 ol{margin:4px 0 0;padding-left:20px}details.setup{border:1px dashed var(--violet-line);border-radius:10px;padding:6px 12px;margin:10px 0}details.setup summary{cursor:pointer}.cdline{background:var(--yellow);outline:1px solid var(--yellow-line);border-radius:3px;padding:0 3px;font-weight:700}.print-only{display:none}@media (max-width:700px){.where2{grid-template-columns:1fr}}
+@media print{details.setup.again{display:none!important}.print-only{display:block}html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact;background:#fff}
+.namer,.namer+.notation,.no-print,.outline{display:none!important}.layout{display:block}
+.print-toc{display:block;break-after:page;margin-top:18px}.print-toc h2{margin:0 0 8px}.print-toc ul{list-style:none;padding:0;margin:0}
+.print-toc li{margin:0}.print-toc a{display:block;padding:6px 0;border-bottom:1px dotted var(--line);color:var(--ink);font-size:12pt}
+.print-toc ul ul{padding-left:18px}.print-toc ul ul a{font-size:10.5pt;color:var(--muted)}body{font-size:10.5pt}.wrap{max-width:none;padding:0}
+.card,.keyeq,.done,.warn,.cgroup,.refs,.stub,details,.asks li,.mail-head,.act{break-inside:avoid}h2,h3.topic,h3.topic+p,h4,.part-head,.handoff{break-after:avoid}
+table.fx tr{break-inside:avoid}table.rubric{break-inside:avoid}.part{break-before:page;border-width:1.5px}#submit{break-before:page}#card-submit{break-before:avoid}#memo{break-before:page}
+pre{white-space:pre-wrap;word-break:break-word}details summary{list-style:none}details summary::-webkit-details-marker{display:none}a{text-decoration:none}}
+</style></head><body data-math-output="mathml" data-guide="cards" data-lab="S06P" data-math-ready="1"><div class="layout"><aside class="outline" aria-label="Guide contents"><div class="ol-title">S06P guide</div><nav><ul><li><a href="#request">The request</a></li><li><a href="#glance">At a glance</a></li><li><a href="#before">Before class</a></li><li><a href="#card-task-01">Part A: Is recorded satisfaction different from CedarCart’s goal?</a></li><li><a href="#card-task-02">Part B: How strong is the evidence that checkout B changes purchase conversion?</a></li><li><a href="#card-task-03">Part C: Do complaints and costs change the checkout launch case?</a></li><li><a href="#card-task-04">Take-home: Does your CedarCart decision survive a careful recheck?</a></li><li><a href="#submit">Finish</a><ul><li><a href="#checklist">Checklist</a></li></ul></li><li><a href="#appendix">Optional practice</a></li></ul></nav></aside><div class="wrap"><header class="hero"><div class="kicker">MASY1-GC1015 · Session 06 · S06P</div><h1>CedarCart: test a checkout change before deciding to launch</h1><p>Your guide for the lab. Start with the email, then work each card in order. Everything else is optional reference.</p></header><nav class="print-toc" aria-hidden="true"><h2>Contents</h2><ul><li><a href="#request">The request</a></li><li><a href="#glance">At a glance</a></li><li><a href="#before">Before class</a></li><li><a href="#card-task-01">Part A: Is recorded satisfaction different from CedarCart’s goal?</a></li><li><a href="#card-task-02">Part B: How strong is the evidence that checkout B changes purchase conversion?</a></li><li><a href="#card-task-03">Part C: Do complaints and costs change the checkout launch case?</a></li><li><a href="#card-task-04">Take-home: Does your CedarCart decision survive a careful recheck?</a></li><li><a href="#submit">Finish</a><ul><li><a href="#checklist">Checklist</a></li></ul></li><li><a href="#appendix">Optional practice</a></li></ul></nav><h2 id="request">The request</h2><article class="mail"><div class="mail-subject"><span class="subj-k">Subject:</span> Evidence needed for the checkout launch decision</div><div class="mail-head"><div class="avatar">PH</div><div><div><b>VP of Product and Head of Operations</b></div><div class="meta">To: Product Analytics Specialist (you)</div></div></div><div class="mail-body"><p>Hi Product Analytics team,</p><p>We need to decide whether the new checkout is ready for a wider launch. Please separate evidence that a change exists from evidence that it is worth making. Use eligible users as the denominator, check customer complaints, and show the dollar impact.</p><p>Specifically, I need answers to 4 questions:</p><ol class="asks"><li><div class="q"><b>1. Did recorded satisfaction clear our goal?</b><div class="d">Compare the survey mean with the stated satisfaction goal. Tell me what the test can say about the recorded respondents, and whether those respondents can stand for all our users.</div></div><a class="go pill" href="#card-task-01">Part A</a></li><li><div class="q"><b>2. Did checkout B improve purchase conversion?</b><div class="d">Use the randomized A and B groups to test the difference. Show the size of the observed lift and a 95% interval. Keep the test result separate from any business hurdle.</div></div><a class="go pill" href="#card-task-02">Part B</a></li><li><div class="q"><b>3. Does the purchase evidence justify a launch after complaints and costs?</b><div class="d">Compare complaint rates with our stated limit. Then account for extra purchase margin, rollout cost, and excess complaint cost. Give me a provisional decision supported by all three checks.</div></div><a class="go pill" href="#card-task-03">Part C</a></li><li><div class="q"><b>4. Does your decision still hold after an evidence audit?</b><div class="d">Recheck the workbook against the supplied formula explanations and the H1, H2, and H3 software output. Keep your own decision, but revise its explanation if a denominator, test comparison, or limitation was missing.</div></div><a class="go pill" href="#card-task-04">Take-home</a></li></ol><p>For your own review:</p><ul class="deliver"><li>Keep your workbook and checkpoint copies locally for your own review. This is ungraded practice; nothing is submitted.</li></ul><p>Please make it easy to trace each claim back to a cell or an output table.</p><p style="margin-top:16px">Best,<br><b>VP of Product and Head of Operations</b><br><span class="meta">CedarCart</span></p><div class="attach"><span>📎 cedarcart_ab_test.csv</span><span>📎 S06P_Learning_Workbook.xlsx</span></div></div></article><section class="part"><div class="part-body"><h1>💻 S06P: Should CedarCart launch checkout Variant B?</h1>
+<p><strong>How this lab works.</strong> You are a Product Analytics Specialist using one CedarCart CSV and one saved workbook throughout. Three 10-minute class practices apply methods taught in the main session. A 15-minute, ungraded revisit completes your own written decision in the same workbook. Set up Excel and SPSS before starting a timer.</p>
+<p><strong>Stakeholders:</strong> VP of Product and Head of Operations<br>
+<strong>Required tools:</strong> Excel 365 and IBM SPSS Statistics<br>
+<strong>Optional, ungraded tools:</strong> Python and R<br>
+<strong>Data:</strong> <code>cedarcart_ab_test.csv</code><br>
+<strong>Status:</strong> Practice only. There is no submission, rubric or deadline.</p>
+<table>
+<thead>
+<tr>
+<th>Work</th>
+<th style="text-align: right;">Time</th>
+<th>Open</th>
+<th>Visible finish check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Class practice 1: satisfaction benchmark</td>
+<td style="text-align: right;">10 minutes</td>
+<td><code>IN-CLASS_Lab Part A!B7</code></td>
+<td><strong>B11</strong> displays a two-tailed p-value of <strong>0.333</strong>.</td>
+</tr>
+<tr>
+<td>Class practice 2: conversion uplift</td>
+<td style="text-align: right;">10 minutes</td>
+<td><code>IN-CLASS_Lab Part B!B7</code></td>
+<td><strong>B11</strong> displays <strong>2.843</strong> and <strong>B12</strong> displays <strong>0.0045</strong>.</td>
+</tr>
+<tr>
+<td>Class practice 3: guardrails and economics</td>
+<td style="text-align: right;">10 minutes</td>
+<td><code>IN-CLASS_Lab Part C!B7</code></td>
+<td><strong>B13</strong> displays <strong>−\$360</strong>; record a brief, evidence-based decision in <strong>B15</strong>.</td>
+</tr>
+<tr>
+<td>Completion and revisit</td>
+<td style="text-align: right;">15 minutes</td>
+<td>Your saved <code>IN-CLASS_Lab Part C!B15</code></td>
+<td>Write two one-sentence reasons (3 minutes), three one-sentence captions (6 minutes), and a three-sentence decision (6 minutes).</td>
+</tr>
+</tbody>
+</table>
+<p>First-time file readiness uses at most <strong>3 minutes from the existing 10-minute contingency</strong>, leaving 7 minutes for recovery. Prepare files before class where possible. Run the supplied complete syntax once; the ten-minute practices inspect its named H1/H2/H3 output. Purple support cells are provided; yellow calculation and decision cells are your work. Written reasons and three short evidence captions belong to the existing <strong>15-minute home revisit</strong>, alongside the final decision.</p>
+<p><strong>Save and resume.</strong> Before class practice, save a working copy named <code>S06P_FirstName_LastName_NetID.xlsx</code>; keep it as your active workbook. At each checkpoint, first save the completed Part to that personalized active workbook with <strong>Ctrl+S</strong> on Windows or <strong>Command-S</strong> on Mac; then make the separately named checkpoint snapshot using <strong>Save a Copy</strong> or <strong>Save As</strong>. The activity-plan names <code>S06_CedarCart_Checkpoint_A.xlsx</code>, <code>S06_CedarCart_Checkpoint_B.xlsx</code> and <code>S06_CedarCart_Completed.xlsx</code> are required checkpoint snapshots at the three checkpoints, alongside your personalized active copy. If <strong>Save As</strong> switches the active file to the snapshot, reopen the now-updated personalized working file before continuing. Resume after A at <code>IN-CLASS_Lab Part B!B7</code>, after B at <code>IN-CLASS_Lab Part C!B7</code>, and after C at <code>IN-CLASS_Lab Part C!B15</code> for the revisit.</p></div></section><h2 id="glance">Your lab at a glance</h2><div class="route"><a class="stop" href="#before"><div class="t">Before class</div><div class="min">setup</div><div class="m">untimed</div></a><a class="stop" href="#card-task-01"><div class="t">Part A</div><div class="min">10 min</div><div class="m">Slide 27 → 28</div></a><a class="stop" href="#card-task-02"><div class="t">Part B</div><div class="min">10 min</div><div class="m">Slide 51 → 52</div></a><a class="stop" href="#card-task-03"><div class="t">Part C</div><div class="min">10 min</div><div class="m">Slide 74 → 78</div></a><a class="stop" href="#card-task-04"><div class="t">Take-home</div><div class="min">15 min</div><div class="m">At home</div></a><a class="stop" href="#submit"><div class="t">Finish</div><div class="min">checklist</div><div class="m">checklist</div></a></div><h2 id="before">Before class: get ready (untimed)</h2><div class="card"><ol class="steps"><li><div class="what">Unzip <code>S06P_Student_Package.zip</code> into one folder.</div><div class="sub">Keep every file together. SPSS looks for the CSV files next to the syntax.</div></li><li><div class="what">Open <code>S06P_Learning_Workbook.xlsx</code> and go to the <b>Start Here</b> sheet.</div><div class="sub">Type your first name, last name and NetID (the part before @nyu.edu). Use <b>File › Save As</b> with the workbook name it shows.</div></li><li><div class="what">Open <code>S06P_SPSS.sps</code> in SPSS and update the <code>CD</code> command.</div><div class="sub">Replace <code>&lt;REPLACE_WITH_FOLDER_CONTAINING_CSV_AND_SPS&gt;</code> with the path of your unzipped lab folder (the folder, not the <code>.sps</code> file; see <a href="#folder-path">Find your folder path</a>). Save As the <code>.sps</code> name shown on Start Here.</div></li><li><div class="what">Select the whole <b>H0</b> block, then choose <b>Run › Selection</b>.</div><div class="sub">The Output Viewer opens with <b>H0 CedarCart Import and Data Screen</b>.</div></li></ol><div class="done">✅ <b>Ready when:</b> the H0 output shows the expected case count and your workbook is saved under your own name.</div><div class="warn">⚠️ <b>Stuck?</b> Don't start Part A on the timer. Ask for help first, or see the SPSS environment guide.</div></div><div class="card" id="folder-path"><h3 style="margin:0 0 6px">Find your folder path (for the <code>CD</code> line)</h3><p style="margin:0 0 8px">SPSS needs the path of the <b>folder</b> you unzipped, the one that holds <code>S06P_SPSS.sps</code> and the CSV files. It is <b>not</b> the path to the <code>.sps</code> file. If you open the folder and see the <code>.sps</code> file and the CSV files inside, that is the right folder.</p><div class="where2"><div class="os"><b>Windows</b><ol><li>Unzip first: right-click <code>S06P_Student_Package.zip</code> › <b>Extract All</b> › <b>Extract</b>. Do not work inside the zip.</li><li>Open the extracted <code>S06P_Student_Package</code> folder, then the <b>Student</b> folder inside it. You should now see <code>S06P_SPSS.sps</code> and the CSV files. This is your lab folder.</li><li>Click once in the address bar at the top of File Explorer: it turns into the path. Press <b>Ctrl+C</b>.</li><li>Or: go up one level, hold <b>Shift</b>, right-click that folder › <b>Copy as path</b>, then delete the double quotes it adds.</li></ol><p class="notation" style="margin:4px 0 0">Looks like <code>C:\Users\you\Downloads\S06P_Student_Package\Student</code></p></div><div class="os"><b>Mac</b><ol><li>Unzip first: double-click <code>S06P_Student_Package.zip</code> in Finder.</li><li>Open the extracted <code>S06P_Student_Package</code> folder, then the <b>Student</b> folder inside it. You should now see <code>S06P_SPSS.sps</code> and the CSV files. This is your lab folder.</li><li>Go up one level and click that folder <b>once</b> to select it (the folder, not a file inside it). Press <b>Option+Command+C</b> (Copy as Pathname), or right-click it, hold <b>Option</b> and choose <b>Copy … as Pathname</b>.</li></ol><p class="notation" style="margin:4px 0 0">Looks like <code>/Users/you/Downloads/S06P_Student_Package/Student</code></p></div></div><p style="margin:8px 0 4px">Paste it between the single quotes on the <code>CD</code> line:</p><pre class="spss"><code>CD 'C:\Users\you\Downloads\S06P_Student_Package\Student'.      <span class="cm">* Windows</span>
+CD '/Users/you/Downloads/S06P_Student_Package/Student'.          <span class="cm">* Mac</span></code></pre><div class="warn">⚠️ <b>Common mistakes:</b> the path ends in <code>/S06P_SPSS.sps</code> (remove the file name); the quotes or the final period are missing; the files are still inside the zip; OneDrive or iCloud has not finished downloading the folder. If H0 says a file cannot be found, check the path first. If the path itself contains an apostrophe (<code>'</code>), put the path in double quotes instead, for example <code>CD "/Users/you/Kim's files/S06P_Student_Package/Student".</code></div></div><div class="card"><b>How every card works</b><div class="legend"><span><span class="sw" style="background:var(--yellow)"></span>Yellow cells: you type here</span><span><span class="sw" style="background:var(--lav)"></span>Lavender cells: guidance</span><span>✓ <b>Check your work</b> box on each sheet turns to “✓ Checked”</span></div><p style="margin:10px 0 0">Each card opens with a short recap of the session content it uses, with the slides and Toolkit pages to reread. Type each formula starting with <code>=</code>, then press <b>Enter</b>. The cells are already formatted, so never multiply a percentage by 100.</p></div><section class="part" id="card-task-01"><div class="part-head"><div><div class="tag">sheet <code>IN-CLASS_Lab Part A</code> · answers email question 1</div><h3><span class="plabel">Part A · </span>Is recorded satisfaction different from CedarCart’s goal?</h3></div><span class="timer">⏱ 10 min</span></div><div class="handoff"><span class="pill">From slide 27</span> → <span>work this card</span> → <span class="pill">Back to slide 28</span> <span class="meta">· bring: Calculated t-statistic of 1.00 and p-value of 0.333 confirming failure to reject the 70-point benchmark.</span></div><div class="part-body"><h4>What the session covered · Section 1 Hypothesis Testing Logic, Errors, and Benchmark Mean Comparisons</h4><div class="recap"><p>Start at <code>IN-CLASS_Lab Part A!B7</code>. Read the supplied sample size, mean, sample spread, goal, and degrees of freedom. This is a <b>one-sample t-test</b>: it compares one group’s average score with a fixed goal. It does not compare checkout A with checkout B.</p><ul><li><b>The question:</b> The null claim <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math></span></span> says the population mean equals the goal; the two-sided alternative <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">H_1</annotation></semantics></math></span></span> says it differs.</li><li><b>The calculation:</b> The standard error <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>E</mi><mo>=</mo><mi>s</mi><mi mathvariant="normal">/</mi><msqrt><mi>n</mi></msqrt></mrow><annotation encoding="application/x-tex">SE=s/\sqrt n</annotation></semantics></math></span></span> measures uncertainty in the sample mean; <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mo stretchy="false">(</mo><mover accent="true"><mi>x</mi><mo>ˉ</mo></mover><mo>−</mo><msub><mi>μ</mi><mn>0</mn></msub><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi>S</mi><mi>E</mi></mrow><annotation encoding="application/x-tex">t=(\bar x-\mu_0)/SE</annotation></semantics></math></span></span> measures its distance from the goal in standard-error units.</li><li><b>The decision:</b> Compare the two-sided p-value with the chosen cutoff <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span></span>; a large p-value does not prove <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math></span></span> true.</li></ul><p>A <b>Type I error</b> rejects a true null claim. A <b>Type II error</b> misses a real difference. Neither error is fixed by calling a small survey representative. After calculating B9:B11, inspect H1 before choosing B13. At home, explain your choice in B14 and caption the H1 evidence in B17. Say clearly whether the recorded respondents can speak for all 800 users.</p><div class="refs"><div class="ref"><div class="src">Course slides</div><div class="pg">Slides 11–27</div><div class="why">What statistical hypotheses mean in business… 12 · Two-Tailed Hypothesis Formulation and Type I Error… 13–16 · The mechanism of Type I and Type II decision errors 17 · The mathematical mechanism of the one-sample… 19 · One-Sample t-Test Statistic and Confidence Interval 20–22 · CedarCart satisfaction survey worked evidence 23</div></div><div class="ref"><div class="src">Concise Toolkit</div><div class="pg">pp. 3–7</div><div class="why">CedarCart p. 4</div></div><div class="ref"><div class="src">Full Toolkit</div><div class="pg">pp. 4–24</div><div class="why">One-Sample t-Test for Benchmark Goals p. 13 · CedarCart p. 5</div></div></div></div><h4>Class work and home revisit</h4><ol><li>Read the supplied purple summaries B7, B8, C7, D7 and B12; enter B9:B11 during the ten-minute practice.</li><li>Inspect supplied H1 output, choose B13, and save the required Checkpoint A snapshot.</li><li>Home revisit, minutes 1–3: B14, one sentence explaining B13; reuse H1 evidence checked in class.</li><li>Minutes 4–9: B17, one caption sentence naming H1, its statistic and p-value, and the conclusion.</li></ol><h4>The equations you are building</h4><div class="keyeq"><div class="notation"><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span></span> = number of recorded satisfaction scores · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>x</mi><mo>ˉ</mo></mover></mrow><annotation encoding="application/x-tex">\bar x</annotation></semantics></math></span></span> = their mean, in points · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span></span> = their sample standard deviation, in points · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\mu_0</annotation></semantics></math></span></span> = stated goal, in points · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>E</mi></mrow><annotation encoding="application/x-tex">SE</annotation></semantics></math></span></span> = standard error, in points · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span></span> = t statistic · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">df</annotation></semantics></math></span></span> = degrees of freedom · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">p_t</annotation></semantics></math></span></span> = two-sided t-test p-value · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">H_0</annotation></semantics></math></span></span> = no difference from the goal · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">H_1</annotation></semantics></math></span></span> = difference from the goal · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span></span> = chosen false-positive cutoff</div><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>S</mi><mi>E</mi><mo>=</mo><mfrac><mi>s</mi><msqrt><mi>n</mi></msqrt></mfrac><mo>=</mo><mfrac><mtext>C7</mtext><msqrt><mtext>B7</mtext></msqrt></mfrac><mo>=</mo><mtext>B9</mtext></mrow><annotation encoding="application/x-tex"> SE=\frac{s}{\sqrt n}=\frac{\text{C7}}{\sqrt{\text{B7}}}=\text{B9} </annotation></semantics></math></span></span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>t</mi><mo>=</mo><mfrac><mrow><mover accent="true"><mi>x</mi><mo>ˉ</mo></mover><mo>−</mo><msub><mi>μ</mi><mn>0</mn></msub></mrow><mrow><mi>S</mi><mi>E</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mtext>B8</mtext><mo>−</mo><mtext>D7</mtext></mrow><mtext>B9</mtext></mfrac><mo>=</mo><mtext>B10</mtext></mrow><annotation encoding="application/x-tex"> t=\frac{\bar x-\mu_0}{SE}=\frac{\text{B8}-\text{D7}}{\text{B9}}=\text{B10} </annotation></semantics></math></span></span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>d</mi><mi>f</mi><mo>=</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>=</mo><mtext>B12</mtext><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mi>p</mi><mi>t</mi></msub><mo>=</mo><mn>2</mn><mi>P</mi><mo stretchy="false">(</mo><msub><mi>T</mi><mrow><mi>d</mi><mi>f</mi></mrow></msub><mo>≥</mo><mi mathvariant="normal">∣</mi><mi>t</mi><mi mathvariant="normal">∣</mi><mo stretchy="false">)</mo><mo>=</mo><mtext>B11</mtext></mrow><annotation encoding="application/x-tex"> df=n-1=\text{B12},\qquad p_t=2P(T_{df}\geq |t|)=\text{B11} </annotation></semantics></math></span></span></div><h4>First, the setup · once per SPSS session</h4><p class="notation" style="margin:2px 0 6px">Run this <b>once each time you open SPSS</b>, before any part. On the <code>CD</code> line, replace <code>&lt;REPLACE_WITH_FOLDER_CONTAINING_CSV_AND_SPS&gt;</code> with the path of your <b>unzipped lab folder</b> (keep the single quotes and the final period). It is the folder that holds <code>S06P_SPSS.sps</code> and the data files, <b>not</b> the <code>.sps</code> file itself: see <a href="#folder-path">Find your folder path</a>. Select from the first line down to the end of the H0 block and choose <b>Run › Selection</b>. Already ran it since you opened SPSS? Skip to the block for this part.</p><pre class="spss"><code><span class="cm">* Lecture connection: Cross-Tool Reconciliation and SRM Audits .</span>
+<span class="cm">* Why: Import the shared user-level CSV before testing or comparing outcomes .</span>
+<span class="cm">* How: CD identifies the folder containing the CSV; GET DATA preserves string identifiers and reads numeric fields .</span>
+<span class="cm">* How: FREQUENCIES shows imported group totals and recorded versus missing survey scores .</span>
+<span class="cm">* Read the result: Check H0's group total of 800 cases and the recorded survey N; inspect variable roles in Data Editor .</span>
+<span class="cm">* Watch out: Do not point CD at the syntax file or silently replace blank scores with zero .</span>
+<span class="cm">* Run: Open the supplied syntax with File &gt; Open &gt; Syntax and adjust only its CD folder .</span>
+<span class="cm">* Run: Select and run the complete H0 block with Run &gt; Selection .</span>
+<span class="cm">* Run: Use Window to open Output Viewer; inspect H0 frequencies and Data Editor Variable View .</span>
+<span class="cm">* S06P supplied reproducible syntax. Replace only the CD folder below; keep CSV and syntax together.</span>
+<span class="cdline">CD '&lt;REPLACE_WITH_FOLDER_CONTAINING_CSV_AND_SPS&gt;'.</span><span class="cm">   * ← change only this path</span>
+<span class="cm">* Name the output block so you can find it in the Viewer.</span>
+TITLE 'H0 CedarCart Import and Data Screen'.
+<span class="cm">* Import numeric fields as text first so failed conversions cannot masquerade as blank source fields.</span>
+GET DATA
+ /TYPE=TXT
+ /FILE='cedarcart_ab_test.csv'
+ /ENCODING='UTF8'
+ /DELCASE=LINE
+ /DELIMITERS=","
+ /QUALIFIER='"'
+ /ARRANGEMENT=DELIMITED
+ /FIRSTCASE=2
+ /VARIABLES=
+ user_id A32
+ group A1
+ purchase_raw A255
+ complaint_raw A255
+ satisfaction_raw A255
+ satisfaction_goal_points_raw A255
+ margin_per_extra_purchase_usd_raw A255
+ rollout_cost_per_b_user_usd_raw A255
+ cost_per_excess_complaint_usd_raw A255
+ complaint_uplift_limit_pp_raw A255.
+<span class="cm">* Give the open dataset a name so later commands can point to it.</span>
+DATASET NAME S06P_CedarCart.
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE purchase=NUMBER(purchase_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE complaint=NUMBER(complaint_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE satisfaction=NUMBER(satisfaction_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE satisfaction_goal_points=NUMBER(satisfaction_goal_points_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE margin_per_extra_purchase_usd=NUMBER(margin_per_extra_purchase_usd_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE rollout_cost_per_b_user_usd=NUMBER(rollout_cost_per_b_user_usd_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE cost_per_excess_complaint_usd=NUMBER(cost_per_excess_complaint_usd_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE complaint_uplift_limit_pp=NUMBER(complaint_uplift_limit_pp_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_purchase=(RTRIM(LTRIM(purchase_raw)) &lt;&gt; '' AND SYSMIS(purchase)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_complaint=(RTRIM(LTRIM(complaint_raw)) &lt;&gt; '' AND SYSMIS(complaint)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_purchase_domain=0.
+<span class="cm">* Compute a value only for rows that meet the condition.</span>
+IF (NOT SYSMIS(purchase)) bad_purchase_domain=(purchase &lt;&gt; 0 AND purchase &lt;&gt; 1).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_complaint_domain=0.
+<span class="cm">* Compute a value only for rows that meet the condition.</span>
+IF (NOT SYSMIS(complaint)) bad_complaint_domain=(complaint &lt;&gt; 0 AND complaint &lt;&gt; 1).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_satisfaction=(RTRIM(LTRIM(satisfaction_raw)) &lt;&gt; '' AND SYSMIS(satisfaction)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_goal=(RTRIM(LTRIM(satisfaction_goal_points_raw)) &lt;&gt; '' AND SYSMIS(satisfaction_goal_points)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_margin=(RTRIM(LTRIM(margin_per_extra_purchase_usd_raw)) &lt;&gt; '' AND SYSMIS(margin_per_extra_purchase_usd)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_rollout_cost=(RTRIM(LTRIM(rollout_cost_per_b_user_usd_raw)) &lt;&gt; '' AND SYSMIS(rollout_cost_per_b_user_usd)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_complaint_cost=(RTRIM(LTRIM(cost_per_excess_complaint_usd_raw)) &lt;&gt; '' AND SYSMIS(cost_per_excess_complaint_usd)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_limit=(RTRIM(LTRIM(complaint_uplift_limit_pp_raw)) &lt;&gt; '' AND SYSMIS(complaint_uplift_limit_pp)).
+COUNT malformed_fields=bad_purchase bad_complaint bad_purchase_domain bad_complaint_domain bad_satisfaction bad_goal bad_margin bad_rollout_cost bad_complaint_cost bad_limit (1).
+<span class="cm">* Collapse rows into group summaries (one row per group).</span>
+AGGREGATE
+ /OUTFILE=* MODE=ADDVARIABLES
+ /BREAK=
+ /malformed_any=MAX(malformed_fields).
+<span class="cm">* Set each variable's measurement level (nominal, ordinal, scale).</span>
+VARIABLE LEVEL group purchase complaint (NOMINAL).
+<span class="cm">* Set each variable's measurement level (nominal, ordinal, scale).</span>
+VARIABLE LEVEL satisfaction satisfaction_goal_points margin_per_extra_purchase_usd rollout_cost_per_b_user_usd cost_per_excess_complaint_usd complaint_uplift_limit_pp (SCALE).
+<span class="cm">* Run the pending transformations now.</span>
+EXECUTE.
+DISPLAY DICTIONARY.
+<span class="cm">* Frequency table: how many cases fall in each category.</span>
+FREQUENCIES VARIABLES=group purchase complaint satisfaction satisfaction_goal_points malformed_fields malformed_any.
+<span class="cm">* Every case must have malformed_any=0. If not, inspect the flagged raw fields, including nonbinary purchase or complaint values, and resolve the input before interpreting H1-H3.</span>
+TEMPORARY.
+<span class="cm">* Keep only the rows that meet the condition (others are deleted).</span>
+SELECT IF (malformed_fields &gt; 0).
+<span class="cm">* Print the listed variables row by row.</span>
+LIST VARIABLES=user_id group bad_purchase bad_complaint bad_purchase_domain bad_complaint_domain bad_satisfaction bad_goal bad_margin bad_rollout_cost bad_complaint_cost bad_limit.
+<span class="cm">* Confirm satisfaction_goal_points has one recorded value, 70, with no missing values, matching H1 TESTVAL before interpreting H1.</span></code></pre><h4>Before the timer · instructor demo</h4><p style="margin:4px 0">Follow along: in SPSS, run the <b>H1</b> block and leave <b>H1 Satisfaction Benchmark</b> open.</p><h4>SPSS block for this part · already in your syntax file</h4><p class="notation" style="margin:2px 0 6px">You do not type this: it is already in <code>S06P_SPSS.sps</code>, the one syntax file you use all session. Once per SPSS session, run the <code>CD</code> line and the H0 block first (the setup code is above). Then press <b>Ctrl+F</b>, search <code>TITLE 'H1</code>, select from the first comment line down to the last period, and choose <b>Run › Selection</b>. Green lines start with <code>*</code>: they are comments that explain the command below them, and SPSS ignores them. Every command ends with a period.</p><pre class="spss"><code><span class="cm">* Lecture connection: One-Sample t-Test for Benchmark Goals .</span>
+<span class="cm">* Why: Test recorded satisfaction against the fixed source-checked 70-point goal .</span>
+<span class="cm">* How: TESTVAL sets the fixed goal; VARIABLES selects satisfaction and excludes blank scores .</span>
+<span class="cm">* How: CI(.95) requests the 95% interval for the difference from the goal .</span>
+<span class="cm">* Read the result: Read H1 N, mean, sample SD, t, df, two-sided significance and whether the difference interval covers zero .</span>
+<span class="cm">* Watch out: Do not interpret the difference-from-goal interval as a between-arm interval .</span>
+<span class="cm">* Run: After H0, find H1 in the supplied Syntax Editor and select the complete block .</span>
+<span class="cm">* Run: Choose Run &gt; Selection, not Run &gt; All for this single block .</span>
+<span class="cm">* Run: Switch with Window to Output Viewer and find H1 One-Sample Statistics and Test .</span>
+TITLE 'H1 Satisfaction Benchmark'.
+<span class="cm">* Make the next transformation apply to the next procedure only.</span>
+TEMPORARY.
+<span class="cm">* Keep only the rows that meet the condition (others are deleted).</span>
+SELECT IF (malformed_any=0).
+<span class="cm">* Compare means with a t test.</span>
+T-TEST /TESTVAL=70 /MISSING=ANALYSIS
+ /VARIABLES=satisfaction /CRITERIA=CI(.95).</code></pre><h4>Open</h4><p style="margin:4px 0">Open <code>IN-CLASS_Lab Part A!B7</code>.</p><h4>Fill in the yellow cells</h4><div class="tablewrap"><table class="fx"><thead><tr><th class="n">#</th><th>Cell</th><th>Type this</th><th>In math</th><th style="text-align:right">Check</th></tr></thead><tbody><tr><td class="n">1</td><td class="cell">B9</td><td class="f"><code>=C7/SQRT(B7)</code></td><td class="m"><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>E</mi><mo>=</mo><mi>s</mi><mi mathvariant="normal">/</mi><msqrt><mi>n</mi></msqrt></mrow><annotation encoding="application/x-tex"> SE=s/\sqrt n </annotation></semantics></math></span></span> <span class="plain">standard error, points</span></td><td class="exp">2.0</td></tr><tr><td class="n">2</td><td class="cell">B10</td><td class="f"><code>=(B8-D7)/B9</code></td><td class="m"><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mo stretchy="false">(</mo><mover accent="true"><mi>x</mi><mo>ˉ</mo></mover><mo>−</mo><msub><mi>μ</mi><mn>0</mn></msub><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi>S</mi><mi>E</mi></mrow><annotation encoding="application/x-tex"> t=(\bar x-\mu_0)/SE </annotation></semantics></math></span></span> <span class="plain">unitless test statistic</span></td><td class="exp">1.000</td></tr><tr><td class="n">3</td><td class="cell">B11</td><td class="f"><code>=T.DIST.2T(ABS(B10),B12)</code></td><td class="m"><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>t</mi></msub><mo>=</mo><mn>2</mn><mi>P</mi><mo stretchy="false">(</mo><msub><mi>T</mi><mrow><mi>d</mi><mi>f</mi></mrow></msub><mo>≥</mo><mi mathvariant="normal">∣</mi><mi>t</mi><mi mathvariant="normal">∣</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex"> p_t=2P(T_{df}\geq |t|) </annotation></semantics></math></span></span> <span class="plain">two-sided test probability</span></td><td class="exp">0.333</td></tr><tr><td class="n">4</td><td class="cell">B13<br>B14<br>B17</td><td colspan="3"><b>B13:</b> pick the best statement from the dropdown.<br><b>B14:</b> Your own short interpretation of the benchmark test and whether the 16 recorded respondents represent all 800 users.<br><b>B17:</b> caption the SPSS <b>H1 Satisfaction Benchmark</b> output. The H1 table names and the N, test, and interval checks you made</td></tr></tbody></table></div><div class="done">✅ <b>Done when:</b> Cell B11 displays a p-value of 0.333. <b>Save.</b></div><div class="warn">⚠️ <b>Most common mistake:</b> Treating a test that does not reject the goal as proof that every CedarCart user meets the goal. The test concerns a mean, and the recorded respondents may not represent all users.</div><details><summary>Stuck? Three quick fixes</summary><ul><li><b>B9 looks too large.</b> Divide C7 by <code>SQRT(B7)</code>, not by B7.</li><li><b>B10 has an unexpected sign.</b> Subtract the goal in D7 from the sample mean in B8.</li><li><b>B11 is one-sided.</b> Use <code>T.DIST.2T(ABS(B10),B12)</code>; B12 supplies the degrees of freedom.</li></ul></details><details><summary>Why does the survey’s reach matter?</summary><p style="margin:0 0 12px">The t-test describes uncertainty from having a limited number of recorded scores. It cannot repair a survey process that favored some users over others. In B14, keep the test conclusion and the question of representation in separate clauses.</p></details></div></section><section class="part" id="card-task-02"><div class="part-head"><div><div class="tag">sheet <code>IN-CLASS_Lab Part B</code> · answers email question 2</div><h3><span class="plabel">Part B · </span>How strong is the evidence that checkout B changes purchase conversion?</h3></div><span class="timer">⏱ 10 min</span></div><div class="handoff"><span class="pill">From slide 51</span> → <span>work this card</span> → <span class="pill">Back to slide 52</span> <span class="meta">· bring: Calculated z-statistic of 2.843 and 95% CI [3.14, 16.86] percentage points for checkout conversion.</span></div><div class="part-body"><h4>What the session covered · Section 2 A/B Testing with Proportions and Statistical Uplift</h4><div class="recap"><p>Start at <code>IN-CLASS_Lab Part B!B7</code>. Each arm’s denominator is its eligible randomized users, not its active sessions. A <b>two-proportion z-test</b> asks whether the observed purchase-rate gap could arise when the true arm rates are equal. Under that null claim, it uses one pooled purchase rate.</p><ul><li><b>Test:</b> Use the pooled rate <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>0</mn></msub><mo>=</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mi>A</mi></msub><mo>+</mo><msub><mi>x</mi><mi>B</mi></msub><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mo stretchy="false">(</mo><msub><mi>n</mi><mi>A</mi></msub><mo>+</mo><msub><mi>n</mi><mi>B</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\hat p_0=(x_A+x_B)/(n_A+n_B)</annotation></semantics></math></span></span> to calculate the null standard error <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><msub><mi>E</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">SE_0</annotation></semantics></math></span></span>, then divide the observed difference <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">\Delta</annotation></semantics></math></span></span> by <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><msub><mi>E</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">SE_0</annotation></semantics></math></span></span>.</li><li><b>Effect interval:</b> Use the supplied unpooled error <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><msub><mi>E</mi><mi mathvariant="normal">Δ</mi></msub></mrow><annotation encoding="application/x-tex">SE_\Delta</annotation></semantics></math></span></span> around <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi></mrow><annotation encoding="application/x-tex">\Delta</annotation></semantics></math></span></span> for the 95% interval; it answers how large the true gap might be.</li><li><b>Units:</b> A difference between two rates is reported in <b>percentage points</b>, not as a relative percent change.</li></ul><p>A small p-value supports a difference; it does not show that the entire interval clears CedarCart’s business hurdle. Check the two claims separately. Enter B9:B12 and B14:B15, then inspect H2 and choose B18 without copying an answer from this guide. At home, explain the test and hurdle comparison in B19. In B22, name the H2 tables and compare its <b>uncorrected Pearson</b> result with the workbook test.</p><div class="refs"><div class="ref"><div class="src">Course slides</div><div class="pg">Slides 28–51</div><div class="why">Randomized Units and Conversion Proportions 29 · Pooled Two-Proportion z-Test Statistic 31–33 · Excel Two-Proportion z-Test and SPSS Verification 34–35 · the Pooled Null Standard Error 36 · Calculating the z-Statistic and p-Value 37 · Mathematical Mechanism of the Unpooled Standard… 39</div></div><div class="ref"><div class="src">Concise Toolkit</div><div class="pg">pp. 8–15</div><div class="why">CedarCart p. 9</div></div><div class="ref"><div class="src">Full Toolkit</div><div class="pg">pp. 25–44</div><div class="why">Two-Proportion z-Test Mechanics p. 25 · Unpooled Confidence Interval for Difference p. 38 · CedarCart p. 26</div></div></div></div><h4>Class work and home revisit</h4><ol><li>Read supplied counts, rates, effect and unpooled SE in purple cells; enter B9:B12 and B14:B15 during ten minutes.</li><li>Inspect supplied H2 output, choose B18, check B11 and B12, and save the required Checkpoint B snapshot.</li><li>Home revisit, minutes 1–3: B19, one sentence explaining B18; reuse H2 evidence checked in class.</li><li>Minutes 4–9: B22, one caption sentence naming H2, its uncorrected Pearson statistic, p-value, and conclusion.</li></ol><h4>The equations you are building</h4><div class="keyeq"><div class="notation"><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mi>A</mi></msub><mo separator="true">,</mo><msub><mi>n</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">n_A,n_B</annotation></semantics></math></span></span> = eligible users in arms A and B · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>A</mi></msub><mo separator="true">,</mo><msub><mi>x</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">x_A,x_B</annotation></semantics></math></span></span> = users who purchased in each arm · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>A</mi></msub><mo separator="true">,</mo><msub><mi>p</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">p_A,p_B</annotation></semantics></math></span></span> = observed purchase rates · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\hat p_0</annotation></semantics></math></span></span> = pooled rate under equal true rates · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><msub><mi>E</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">SE_0</annotation></semantics></math></span></span> = pooled null standard error · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mo>=</mo><msub><mi>p</mi><mi>B</mi></msub><mo>−</mo><msub><mi>p</mi><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">\Delta=p_B-p_A</annotation></semantics></math></span></span> = observed rate gap · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span></span> = conversion test statistic · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Φ</mi></mrow><annotation encoding="application/x-tex">\Phi</annotation></semantics></math></span></span> = standard normal cumulative probability · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>z</mi></msub></mrow><annotation encoding="application/x-tex">p_z</annotation></semantics></math></span></span> = two-sided test p-value · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><msub><mi>E</mi><mi mathvariant="normal">Δ</mi></msub></mrow><annotation encoding="application/x-tex">SE_\Delta</annotation></semantics></math></span></span> = supplied unpooled standard error · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo separator="true">,</mo><mi>U</mi></mrow><annotation encoding="application/x-tex">L,U</annotation></semantics></math></span></span> = lower and upper 95% effect bounds</div><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>0</mn></msub><mo>=</mo><mfrac><mrow><msub><mi>x</mi><mi>A</mi></msub><mo>+</mo><msub><mi>x</mi><mi>B</mi></msub></mrow><mrow><msub><mi>n</mi><mi>A</mi></msub><mo>+</mo><msub><mi>n</mi><mi>B</mi></msub></mrow></mfrac><mo>=</mo><mfrac><mrow><mtext>C7</mtext><mo>+</mo><mtext>D7</mtext></mrow><mrow><mtext>B7</mtext><mo>+</mo><mtext>B8</mtext></mrow></mfrac><mo>=</mo><mtext>B9</mtext><mo separator="true">,</mo><mspace width="2em"></mspace><mi>S</mi><msub><mi>E</mi><mn>0</mn></msub><mo>=</mo><msqrt><mrow><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>0</mn></msub><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>0</mn></msub><mo stretchy="false">)</mo><mrow><mo fence="true">(</mo><mfrac><mn>1</mn><msub><mi>n</mi><mi>A</mi></msub></mfrac><mo>+</mo><mfrac><mn>1</mn><msub><mi>n</mi><mi>B</mi></msub></mfrac><mo fence="true">)</mo></mrow></mrow></msqrt><mo>=</mo><mtext>B10</mtext></mrow><annotation encoding="application/x-tex"> \hat p_0=\frac{x_A+x_B}{n_A+n_B}=\frac{\text{C7}+\text{D7}}{\text{B7}+\text{B8}}=\text{B9},\qquad SE_0=\sqrt{\hat p_0(1-\hat p_0)\left(\frac1{n_A}+\frac1{n_B}\right)}=\text{B10} </annotation></semantics></math></span></span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">Δ</mi><mo>=</mo><msub><mi>p</mi><mi>B</mi></msub><mo>−</mo><msub><mi>p</mi><mi>A</mi></msub><mo>=</mo><mtext>B16</mtext><mo separator="true">,</mo><mspace width="2em"></mspace><mi>z</mi><mo>=</mo><mfrac><mi mathvariant="normal">Δ</mi><mrow><mi>S</mi><msub><mi>E</mi><mn>0</mn></msub></mrow></mfrac><mo>=</mo><mfrac><mrow><mtext>F7</mtext><mo>−</mo><mtext>E7</mtext></mrow><mtext>B10</mtext></mfrac><mo>=</mo><mtext>B11</mtext><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mi>p</mi><mi>z</mi></msub><mo>=</mo><mn>2</mn><mo fence="true" stretchy="true" minsize="1.2em" maxsize="1.2em">(</mo><mn>1</mn><mo>−</mo><mi mathvariant="normal">Φ</mi><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><mi>z</mi><mi mathvariant="normal">∣</mi><mo stretchy="false">)</mo><mo fence="true" stretchy="true" minsize="1.2em" maxsize="1.2em">)</mo><mo>=</mo><mtext>B12</mtext></mrow><annotation encoding="application/x-tex"> \Delta=p_B-p_A=\text{B16},\qquad z=\frac{\Delta}{SE_0}=\frac{\text{F7}-\text{E7}}{\text{B10}}=\text{B11},\qquad p_z=2\bigl(1-\Phi(|z|)\bigr)=\text{B12} </annotation></semantics></math></span></span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>L</mi><mo>=</mo><mi mathvariant="normal">Δ</mi><mo>−</mo><mn>1.96</mn><mi>S</mi><msub><mi>E</mi><mi mathvariant="normal">Δ</mi></msub><mo>=</mo><mtext>B14</mtext><mo separator="true">,</mo><mspace width="2em"></mspace><mi>U</mi><mo>=</mo><mi mathvariant="normal">Δ</mi><mo>+</mo><mn>1.96</mn><mi>S</mi><msub><mi>E</mi><mi mathvariant="normal">Δ</mi></msub><mo>=</mo><mtext>B15</mtext><mo separator="true">,</mo><mspace width="2em"></mspace><mi>S</mi><msub><mi>E</mi><mi mathvariant="normal">Δ</mi></msub><mo>=</mo><mtext>B13</mtext></mrow><annotation encoding="application/x-tex"> L=\Delta-1.96SE_\Delta=\text{B14},\qquad U=\Delta+1.96SE_\Delta=\text{B15},\qquad SE_\Delta=\text{B13} </annotation></semantics></math></span></span></div><details class="setup again"><summary><b>Just opened SPSS?</b> Run the setup first: the <code>CD</code> line and H0</summary><p class="notation" style="margin:2px 0 6px">Run this <b>once each time you open SPSS</b>, before any part. On the <code>CD</code> line, replace <code>&lt;REPLACE_WITH_FOLDER_CONTAINING_CSV_AND_SPS&gt;</code> with the path of your <b>unzipped lab folder</b> (keep the single quotes and the final period). It is the folder that holds <code>S06P_SPSS.sps</code> and the data files, <b>not</b> the <code>.sps</code> file itself: see <a href="#folder-path">Find your folder path</a>. Select from the first line down to the end of the H0 block and choose <b>Run › Selection</b>. Already ran it since you opened SPSS? Skip to the block for this part.</p><pre class="spss"><code><span class="cm">* Lecture connection: Cross-Tool Reconciliation and SRM Audits .</span>
+<span class="cm">* Why: Import the shared user-level CSV before testing or comparing outcomes .</span>
+<span class="cm">* How: CD identifies the folder containing the CSV; GET DATA preserves string identifiers and reads numeric fields .</span>
+<span class="cm">* How: FREQUENCIES shows imported group totals and recorded versus missing survey scores .</span>
+<span class="cm">* Read the result: Check H0's group total of 800 cases and the recorded survey N; inspect variable roles in Data Editor .</span>
+<span class="cm">* Watch out: Do not point CD at the syntax file or silently replace blank scores with zero .</span>
+<span class="cm">* Run: Open the supplied syntax with File &gt; Open &gt; Syntax and adjust only its CD folder .</span>
+<span class="cm">* Run: Select and run the complete H0 block with Run &gt; Selection .</span>
+<span class="cm">* Run: Use Window to open Output Viewer; inspect H0 frequencies and Data Editor Variable View .</span>
+<span class="cm">* S06P supplied reproducible syntax. Replace only the CD folder below; keep CSV and syntax together.</span>
+<span class="cdline">CD '&lt;REPLACE_WITH_FOLDER_CONTAINING_CSV_AND_SPS&gt;'.</span><span class="cm">   * ← change only this path</span>
+<span class="cm">* Name the output block so you can find it in the Viewer.</span>
+TITLE 'H0 CedarCart Import and Data Screen'.
+<span class="cm">* Import numeric fields as text first so failed conversions cannot masquerade as blank source fields.</span>
+GET DATA
+ /TYPE=TXT
+ /FILE='cedarcart_ab_test.csv'
+ /ENCODING='UTF8'
+ /DELCASE=LINE
+ /DELIMITERS=","
+ /QUALIFIER='"'
+ /ARRANGEMENT=DELIMITED
+ /FIRSTCASE=2
+ /VARIABLES=
+ user_id A32
+ group A1
+ purchase_raw A255
+ complaint_raw A255
+ satisfaction_raw A255
+ satisfaction_goal_points_raw A255
+ margin_per_extra_purchase_usd_raw A255
+ rollout_cost_per_b_user_usd_raw A255
+ cost_per_excess_complaint_usd_raw A255
+ complaint_uplift_limit_pp_raw A255.
+<span class="cm">* Give the open dataset a name so later commands can point to it.</span>
+DATASET NAME S06P_CedarCart.
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE purchase=NUMBER(purchase_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE complaint=NUMBER(complaint_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE satisfaction=NUMBER(satisfaction_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE satisfaction_goal_points=NUMBER(satisfaction_goal_points_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE margin_per_extra_purchase_usd=NUMBER(margin_per_extra_purchase_usd_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE rollout_cost_per_b_user_usd=NUMBER(rollout_cost_per_b_user_usd_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE cost_per_excess_complaint_usd=NUMBER(cost_per_excess_complaint_usd_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE complaint_uplift_limit_pp=NUMBER(complaint_uplift_limit_pp_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_purchase=(RTRIM(LTRIM(purchase_raw)) &lt;&gt; '' AND SYSMIS(purchase)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_complaint=(RTRIM(LTRIM(complaint_raw)) &lt;&gt; '' AND SYSMIS(complaint)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_purchase_domain=0.
+<span class="cm">* Compute a value only for rows that meet the condition.</span>
+IF (NOT SYSMIS(purchase)) bad_purchase_domain=(purchase &lt;&gt; 0 AND purchase &lt;&gt; 1).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_complaint_domain=0.
+<span class="cm">* Compute a value only for rows that meet the condition.</span>
+IF (NOT SYSMIS(complaint)) bad_complaint_domain=(complaint &lt;&gt; 0 AND complaint &lt;&gt; 1).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_satisfaction=(RTRIM(LTRIM(satisfaction_raw)) &lt;&gt; '' AND SYSMIS(satisfaction)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_goal=(RTRIM(LTRIM(satisfaction_goal_points_raw)) &lt;&gt; '' AND SYSMIS(satisfaction_goal_points)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_margin=(RTRIM(LTRIM(margin_per_extra_purchase_usd_raw)) &lt;&gt; '' AND SYSMIS(margin_per_extra_purchase_usd)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_rollout_cost=(RTRIM(LTRIM(rollout_cost_per_b_user_usd_raw)) &lt;&gt; '' AND SYSMIS(rollout_cost_per_b_user_usd)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_complaint_cost=(RTRIM(LTRIM(cost_per_excess_complaint_usd_raw)) &lt;&gt; '' AND SYSMIS(cost_per_excess_complaint_usd)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_limit=(RTRIM(LTRIM(complaint_uplift_limit_pp_raw)) &lt;&gt; '' AND SYSMIS(complaint_uplift_limit_pp)).
+COUNT malformed_fields=bad_purchase bad_complaint bad_purchase_domain bad_complaint_domain bad_satisfaction bad_goal bad_margin bad_rollout_cost bad_complaint_cost bad_limit (1).
+<span class="cm">* Collapse rows into group summaries (one row per group).</span>
+AGGREGATE
+ /OUTFILE=* MODE=ADDVARIABLES
+ /BREAK=
+ /malformed_any=MAX(malformed_fields).
+<span class="cm">* Set each variable's measurement level (nominal, ordinal, scale).</span>
+VARIABLE LEVEL group purchase complaint (NOMINAL).
+<span class="cm">* Set each variable's measurement level (nominal, ordinal, scale).</span>
+VARIABLE LEVEL satisfaction satisfaction_goal_points margin_per_extra_purchase_usd rollout_cost_per_b_user_usd cost_per_excess_complaint_usd complaint_uplift_limit_pp (SCALE).
+<span class="cm">* Run the pending transformations now.</span>
+EXECUTE.
+DISPLAY DICTIONARY.
+<span class="cm">* Frequency table: how many cases fall in each category.</span>
+FREQUENCIES VARIABLES=group purchase complaint satisfaction satisfaction_goal_points malformed_fields malformed_any.
+<span class="cm">* Every case must have malformed_any=0. If not, inspect the flagged raw fields, including nonbinary purchase or complaint values, and resolve the input before interpreting H1-H3.</span>
+TEMPORARY.
+<span class="cm">* Keep only the rows that meet the condition (others are deleted).</span>
+SELECT IF (malformed_fields &gt; 0).
+<span class="cm">* Print the listed variables row by row.</span>
+LIST VARIABLES=user_id group bad_purchase bad_complaint bad_purchase_domain bad_complaint_domain bad_satisfaction bad_goal bad_margin bad_rollout_cost bad_complaint_cost bad_limit.
+<span class="cm">* Confirm satisfaction_goal_points has one recorded value, 70, with no missing values, matching H1 TESTVAL before interpreting H1.</span></code></pre></details><p class="print-only notation">Just opened SPSS? Run the setup first (the <code>CD</code> line and H0; code in Part A).</p><h4>Before the timer · instructor demo</h4><p style="margin:4px 0">Follow along: in SPSS, run the <b>H2</b> block and leave <b>H2 Purchase by Group</b> open.</p><h4>SPSS block for this part · already in your syntax file</h4><p class="notation" style="margin:2px 0 6px">You do not type this: it is already in <code>S06P_SPSS.sps</code>, the one syntax file you use all session. Once per SPSS session, run the <code>CD</code> line and the H0 block first (setup code in Part A). Then press <b>Ctrl+F</b>, search <code>TITLE 'H2</code>, select from the first comment line down to the last period, and choose <b>Run › Selection</b>. Green lines start with <code>*</code>: they are comments that explain the command below them, and SPSS ignores them. Every command ends with a period.</p><pre class="spss"><code><span class="cm">* Lecture connection: Two-Proportion z-Test Mechanics .</span>
+<span class="cm">* Why: Compare purchase outcomes among users with observed 0 or 1 outcomes .</span>
+<span class="cm">* How: TEMPORARY and SELECT IF retain A/B assignments with observed binary purchases for the following CROSSTABS only .</span>
+<span class="cm">* How: CHISQ supplies the uncorrected Pearson 2×2 statistic and df 1 .</span>
+<span class="cm">* Read the result: Read H2 counts, row percentages and the Pearson row; its uncorrected statistic matches conversion z squared .</span>
+<span class="cm">* Watch out: Do not separate TEMPORARY and SELECT IF from CROSSTABS or compare Yates' correction with z squared .</span>
+<span class="cm">* Run: Run H0 first; find H2 and select its entire block, including TEMPORARY and CROSSTABS .</span>
+<span class="cm">* Run: Choose Run &gt; Selection .</span>
+<span class="cm">* Run: In Output Viewer, locate H2 Crosstabulation and Pearson Chi-Square, not Continuity Correction .</span>
+TITLE 'H2 Purchase by Group'.
+<span class="cm">* Make the next transformation apply to the next procedure only.</span>
+TEMPORARY.
+<span class="cm">* Keep only the rows that meet the condition (others are deleted).</span>
+SELECT IF (malformed_any=0 AND (group='A' OR group='B') AND (purchase=0 OR purchase=1)).
+<span class="cm">* Two-way table: counts and percentages for one variable by another.</span>
+CROSSTABS /TABLES=group BY purchase
+ /FORMAT=AVALUE TABLES /STATISTICS=CHISQ
+ /CELLS=COUNT ROW /COUNT ROUND CELL.</code></pre><h4>Open</h4><p style="margin:4px 0">Open <code>IN-CLASS_Lab Part B!B7</code>.</p><h4>Fill in the yellow cells</h4><div class="tablewrap"><table class="fx"><thead><tr><th class="n">#</th><th>Cell</th><th>Type this</th><th>In math</th><th style="text-align:right">Check</th></tr></thead><tbody><tr><td class="n">1</td><td class="cell">B9</td><td class="f"><code>=(C7+D7)/(B7+B8)</code></td><td class="m"><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>0</mn></msub><mo>=</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mi>A</mi></msub><mo>+</mo><msub><mi>x</mi><mi>B</mi></msub><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mo stretchy="false">(</mo><msub><mi>n</mi><mi>A</mi></msub><mo>+</mo><msub><mi>n</mi><mi>B</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex"> \hat p_0=(x_A+x_B)/(n_A+n_B) </annotation></semantics></math></span></span> <span class="plain">pooled purchase rate</span></td><td class="exp">45.0%</td></tr><tr><td class="n">2</td><td class="cell">B10</td><td class="f"><code>=SQRT(B9*(1-B9)*(1/B7+1/B8))</code></td><td class="m"><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><msub><mi>E</mi><mn>0</mn></msub><mo>=</mo><msqrt><mrow><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>0</mn></msub><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mn>0</mn></msub><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>1</mn><mi mathvariant="normal">/</mi><msub><mi>n</mi><mi>A</mi></msub><mo>+</mo><mn>1</mn><mi mathvariant="normal">/</mi><msub><mi>n</mi><mi>B</mi></msub><mo stretchy="false">)</mo></mrow></msqrt></mrow><annotation encoding="application/x-tex"> SE_0=\sqrt{\hat p_0(1-\hat p_0)(1/n_A+1/n_B)} </annotation></semantics></math></span></span> <span class="plain">null standard error</span></td><td class="exp">0.03518</td></tr><tr><td class="n">3</td><td class="cell">B11</td><td class="f"><code>=(F7-E7)/B10</code></td><td class="m"><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi mathvariant="normal">Δ</mi><mi mathvariant="normal">/</mi><mi>S</mi><msub><mi>E</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex"> z=\Delta/SE_0 </annotation></semantics></math></span></span> <span class="plain">unitless conversion statistic</span></td><td class="exp">2.843</td></tr><tr><td class="n">4</td><td class="cell">B12</td><td class="f"><code>=2*(1-NORM.S.DIST(ABS(B11),TRUE))</code></td><td class="m"><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>z</mi></msub><mo>=</mo><mn>2</mn><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi mathvariant="normal">Φ</mi><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><mi>z</mi><mi mathvariant="normal">∣</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex"> p_z=2(1-\Phi(|z|)) </annotation></semantics></math></span></span> <span class="plain">two-sided test probability</span></td><td class="exp">0.0045</td></tr><tr><td class="n">5</td><td class="cell">B14</td><td class="f"><code>=B16-1.96*B13</code></td><td class="m"><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mi mathvariant="normal">Δ</mi><mo>−</mo><mn>1.96</mn><mi>S</mi><msub><mi>E</mi><mi mathvariant="normal">Δ</mi></msub></mrow><annotation encoding="application/x-tex"> L=\Delta-1.96SE_\Delta </annotation></semantics></math></span></span> <span class="plain">lower effect bound</span></td><td class="exp">3.14%</td></tr><tr><td class="n">6</td><td class="cell">B15</td><td class="f"><code>=B16+1.96*B13</code></td><td class="m"><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>=</mo><mi mathvariant="normal">Δ</mi><mo>+</mo><mn>1.96</mn><mi>S</mi><msub><mi>E</mi><mi mathvariant="normal">Δ</mi></msub></mrow><annotation encoding="application/x-tex"> U=\Delta+1.96SE_\Delta </annotation></semantics></math></span></span> <span class="plain">upper effect bound</span></td><td class="exp">16.86%</td></tr><tr><td class="n">7</td><td class="cell">B18<br>B19<br>B22</td><td colspan="3"><b>B18:</b> pick the best statement from the dropdown.<br><b>B19:</b> The test evidence, interval-to-hurdle comparison, and distinction between the two<br><b>B22:</b> caption the SPSS <b>H2 Purchase by Group</b> output. The H2 table names, observed row denominators, and uncorrected Pearson comparison you checked</td></tr></tbody></table></div><div class="done">✅ <b>Done when:</b> Cell B11 displays z = 2.843 and B12 displays p = 0.0045. <b>Save.</b></div><div class="warn">⚠️ <b>Most common mistake:</b> Using the pooled standard error for the effect interval. B10 is for testing equal rates; the interval uses the supplied unpooled standard error in B13.</div><details><summary>Stuck? Three quick fixes</summary><ul><li><b>The pooled rate exceeds 100%.</b> Divide total purchases by total eligible users in B9; do not multiply the formula by 100.</li><li><b>The z sign seems reversed.</b> B11 uses the B rate in F7 minus the A rate in E7.</li><li><b>H2 does not match B11.</b> Compare B11 squared with H2’s uncorrected Pearson chi-square, not its continuity-corrected row.</li></ul></details><details><summary>Why are the two standard errors different?</summary><p style="margin:0 0 12px">The test temporarily assumes equal true purchase rates, so it combines the purchases to estimate one rate. The effect interval does not make that equality assumption. It estimates uncertainty using each arm’s observed rate. That is why B10 and B13 have different jobs.</p></details></div></section><section class="part" id="card-task-03"><div class="part-head"><div><div class="tag">sheet <code>IN-CLASS_Lab Part C</code> · answers email question 3</div><h3><span class="plabel">Part C · </span>Do complaints and costs change the checkout launch case?</h3></div><span class="timer">⏱ 10 min</span></div><div class="handoff"><span class="pill">From slide 74</span> → <span>work this card</span> → <span class="pill">Back to slide 78</span> <span class="meta">· bring: Calculated net loss of -$360 and verified guardrail breach leading to recommendation against rollout.</span></div><div class="part-body"><h4>What the session covered · Section 3 Practical Significance, Guardrail Metrics, and Cross-Tool Reconciliation</h4><div class="recap"><p>Start at <code>IN-CLASS_Lab Part C!B7</code>. A <b>guardrail</b> is a limit on harm that matters alongside the main purchase measure. First calculate complaints per eligible user in each arm. Then compare the B-minus-A complaint gap with the supplied limit in B12. Finally calculate the experiment’s net dollar impact.</p><ul><li><b>Complaint rates:</b> Each arm’s complaint count is divided by that arm’s eligible users; the gap <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Δ</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">\Delta_c</annotation></semantics></math></span></span> is in percentage points.</li><li><b>Net impact:</b> Value extra purchases at margin, then subtract B rollout cost and the cost of excess complaints.</li><li><b>Reconcile:</b> For a two-by-two table, the uncorrected Pearson result <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\chi^2</annotation></semantics></math></span></span> matches the squared corresponding proportion statistic <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>z</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">z^2</annotation></semantics></math></span></span>.</li></ul><p>Do not let one purchase p-value make the whole launch decision. The business rule needs purchase evidence, the complaint limit, and economics together. Enter B9:B11 and B13. Inspect H3, then write <b>your own</b> provisional sentence in B15 and save the Completed snapshot. At home, add the H3 caption in B19. Expand B15 to cover the decision, both outcomes and net impact, and one limit on what this experiment establishes.</p><div class="refs"><div class="ref"><div class="src">Course slides</div><div class="pg">Slides 53–74</div><div class="why">What practical significance and guardrails mean 54 · Net Incremental Economic Impact of Screen Variant B 55–57 · The mechanism linking practical thresholds and… 58 · CedarCart experimentation evidence and unit… 59 · Worked Cross-Tool Reconciliation on CedarCart Data 62 · SPSS Syntax for Two-by-Two Cross-Tabulation and… 64–67</div></div><div class="ref"><div class="src">Concise Toolkit</div><div class="pg">pp. 16–22</div><div class="why">CedarCart p. 18</div></div><div class="ref"><div class="src">Full Toolkit</div><div class="pg">pp. 45–68</div><div class="why">CedarCart p. 46</div></div></div></div><h4>Class work and home revisit</h4><ol><li>Read supplied complaint counts, source limit and H3 comparison; enter B9:B11 and B13 during the ten-minute practice.</li><li>Inspect supplied H3 output and draft one provisional evidence-based sentence in B15; save the required Completed snapshot.</li><li>Home revisit, minutes 4–9: B19, one caption sentence naming H3, its uncorrected Pearson statistic, p-value, and conclusion.</li><li>Minutes 10–15: expand B15 to three sentences: launch decision, purchase-and-complaint evidence with net impact, and one limitation.</li></ol><h4>The equations you are building</h4><div class="keyeq"><div class="notation"><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mi>A</mi></msub><mo separator="true">,</mo><msub><mi>n</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">n_A,n_B</annotation></semantics></math></span></span> = eligible users in arms A and B · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>A</mi></msub><mo separator="true">,</mo><msub><mi>c</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">c_A,c_B</annotation></semantics></math></span></span> = their complaint counts · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mi>A</mi></msub><mo separator="true">,</mo><msub><mi>r</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">r_A,r_B</annotation></semantics></math></span></span> = their complaint rates · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Δ</mi><mi>c</mi></msub><mo>=</mo><msub><mi>r</mi><mi>B</mi></msub><mo>−</mo><msub><mi>r</mi><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">\Delta_c=r_B-r_A</annotation></semantics></math></span></span> = B-minus-A complaint-rate gap · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math></span></span> = supplied complaint-gap limit · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Δ</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">\Delta_x</annotation></semantics></math></span></span> = B purchases minus A purchases · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span></span> = margin per extra purchase · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">c_r</annotation></semantics></math></span></span> = rollout cost per B user · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">c_c</annotation></semantics></math></span></span> = cost per excess complaint · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span></span> = observed experiment net impact · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\chi^2</annotation></semantics></math></span></span> = uncorrected Pearson statistic · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span></span> = corresponding proportion statistic</div><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>r</mi><mi>A</mi></msub><mo>=</mo><mfrac><msub><mi>c</mi><mi>A</mi></msub><msub><mi>n</mi><mi>A</mi></msub></mfrac><mo>=</mo><mfrac><mtext>C7</mtext><mtext>B7</mtext></mfrac><mo>=</mo><mtext>B9</mtext><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mi>r</mi><mi>B</mi></msub><mo>=</mo><mfrac><msub><mi>c</mi><mi>B</mi></msub><msub><mi>n</mi><mi>B</mi></msub></mfrac><mo>=</mo><mfrac><mtext>D7</mtext><mtext>B8</mtext></mfrac><mo>=</mo><mtext>B10</mtext><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mi mathvariant="normal">Δ</mi><mi>c</mi></msub><mo>=</mo><msub><mi>r</mi><mi>B</mi></msub><mo>−</mo><msub><mi>r</mi><mi>A</mi></msub><mo>=</mo><mtext>B11</mtext><mo separator="true">,</mo><mspace width="2em"></mspace><mi>g</mi><mo>=</mo><mtext>B12</mtext></mrow><annotation encoding="application/x-tex"> r_A=\frac{c_A}{n_A}=\frac{\text{C7}}{\text{B7}}=\text{B9},\qquad r_B=\frac{c_B}{n_B}=\frac{\text{D7}}{\text{B8}}=\text{B10},\qquad \Delta_c=r_B-r_A=\text{B11},\qquad g=\text{B12} </annotation></semantics></math></span></span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>V</mi><mo>=</mo><msub><mi mathvariant="normal">Δ</mi><mi>x</mi></msub><mi>m</mi><mo>−</mo><msub><mi>n</mi><mi>B</mi></msub><msub><mi>c</mi><mi>r</mi></msub><mo>−</mo><mo stretchy="false">(</mo><msub><mi>c</mi><mi>B</mi></msub><mo>−</mo><msub><mi>c</mi><mi>A</mi></msub><mo stretchy="false">)</mo><msub><mi>c</mi><mi>c</mi></msub><mo>=</mo><mtext>B13</mtext><mo separator="true">,</mo><mspace width="2em"></mspace><msub><mi mathvariant="normal">Δ</mi><mi>x</mi></msub><mo>=</mo><mtext>Part&nbsp;B&nbsp;D7</mtext><mo>−</mo><mtext>Part&nbsp;B&nbsp;C7</mtext></mrow><annotation encoding="application/x-tex"> V=\Delta_x m-n_Bc_r-(c_B-c_A)c_c=\text{B13},\qquad \Delta_x=\text{Part B D7}-\text{Part B C7} </annotation></semantics></math></span></span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>χ</mi><mn>2</mn></msup><mo>=</mo><msup><mi>z</mi><mn>2</mn></msup><mspace width="1em"></mspace><mtext>for&nbsp;the&nbsp;matching&nbsp;uncorrected&nbsp;two-by-two&nbsp;test</mtext></mrow><annotation encoding="application/x-tex"> \chi^2=z^2\quad\text{for the matching uncorrected two-by-two test} </annotation></semantics></math></span></span></div><details class="setup again"><summary><b>Just opened SPSS?</b> Run the setup first: the <code>CD</code> line and H0</summary><p class="notation" style="margin:2px 0 6px">Run this <b>once each time you open SPSS</b>, before any part. On the <code>CD</code> line, replace <code>&lt;REPLACE_WITH_FOLDER_CONTAINING_CSV_AND_SPS&gt;</code> with the path of your <b>unzipped lab folder</b> (keep the single quotes and the final period). It is the folder that holds <code>S06P_SPSS.sps</code> and the data files, <b>not</b> the <code>.sps</code> file itself: see <a href="#folder-path">Find your folder path</a>. Select from the first line down to the end of the H0 block and choose <b>Run › Selection</b>. Already ran it since you opened SPSS? Skip to the block for this part.</p><pre class="spss"><code><span class="cm">* Lecture connection: Cross-Tool Reconciliation and SRM Audits .</span>
+<span class="cm">* Why: Import the shared user-level CSV before testing or comparing outcomes .</span>
+<span class="cm">* How: CD identifies the folder containing the CSV; GET DATA preserves string identifiers and reads numeric fields .</span>
+<span class="cm">* How: FREQUENCIES shows imported group totals and recorded versus missing survey scores .</span>
+<span class="cm">* Read the result: Check H0's group total of 800 cases and the recorded survey N; inspect variable roles in Data Editor .</span>
+<span class="cm">* Watch out: Do not point CD at the syntax file or silently replace blank scores with zero .</span>
+<span class="cm">* Run: Open the supplied syntax with File &gt; Open &gt; Syntax and adjust only its CD folder .</span>
+<span class="cm">* Run: Select and run the complete H0 block with Run &gt; Selection .</span>
+<span class="cm">* Run: Use Window to open Output Viewer; inspect H0 frequencies and Data Editor Variable View .</span>
+<span class="cm">* S06P supplied reproducible syntax. Replace only the CD folder below; keep CSV and syntax together.</span>
+<span class="cdline">CD '&lt;REPLACE_WITH_FOLDER_CONTAINING_CSV_AND_SPS&gt;'.</span><span class="cm">   * ← change only this path</span>
+<span class="cm">* Name the output block so you can find it in the Viewer.</span>
+TITLE 'H0 CedarCart Import and Data Screen'.
+<span class="cm">* Import numeric fields as text first so failed conversions cannot masquerade as blank source fields.</span>
+GET DATA
+ /TYPE=TXT
+ /FILE='cedarcart_ab_test.csv'
+ /ENCODING='UTF8'
+ /DELCASE=LINE
+ /DELIMITERS=","
+ /QUALIFIER='"'
+ /ARRANGEMENT=DELIMITED
+ /FIRSTCASE=2
+ /VARIABLES=
+ user_id A32
+ group A1
+ purchase_raw A255
+ complaint_raw A255
+ satisfaction_raw A255
+ satisfaction_goal_points_raw A255
+ margin_per_extra_purchase_usd_raw A255
+ rollout_cost_per_b_user_usd_raw A255
+ cost_per_excess_complaint_usd_raw A255
+ complaint_uplift_limit_pp_raw A255.
+<span class="cm">* Give the open dataset a name so later commands can point to it.</span>
+DATASET NAME S06P_CedarCart.
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE purchase=NUMBER(purchase_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE complaint=NUMBER(complaint_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE satisfaction=NUMBER(satisfaction_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE satisfaction_goal_points=NUMBER(satisfaction_goal_points_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE margin_per_extra_purchase_usd=NUMBER(margin_per_extra_purchase_usd_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE rollout_cost_per_b_user_usd=NUMBER(rollout_cost_per_b_user_usd_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE cost_per_excess_complaint_usd=NUMBER(cost_per_excess_complaint_usd_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE complaint_uplift_limit_pp=NUMBER(complaint_uplift_limit_pp_raw,F30.16).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_purchase=(RTRIM(LTRIM(purchase_raw)) &lt;&gt; '' AND SYSMIS(purchase)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_complaint=(RTRIM(LTRIM(complaint_raw)) &lt;&gt; '' AND SYSMIS(complaint)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_purchase_domain=0.
+<span class="cm">* Compute a value only for rows that meet the condition.</span>
+IF (NOT SYSMIS(purchase)) bad_purchase_domain=(purchase &lt;&gt; 0 AND purchase &lt;&gt; 1).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_complaint_domain=0.
+<span class="cm">* Compute a value only for rows that meet the condition.</span>
+IF (NOT SYSMIS(complaint)) bad_complaint_domain=(complaint &lt;&gt; 0 AND complaint &lt;&gt; 1).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_satisfaction=(RTRIM(LTRIM(satisfaction_raw)) &lt;&gt; '' AND SYSMIS(satisfaction)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_goal=(RTRIM(LTRIM(satisfaction_goal_points_raw)) &lt;&gt; '' AND SYSMIS(satisfaction_goal_points)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_margin=(RTRIM(LTRIM(margin_per_extra_purchase_usd_raw)) &lt;&gt; '' AND SYSMIS(margin_per_extra_purchase_usd)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_rollout_cost=(RTRIM(LTRIM(rollout_cost_per_b_user_usd_raw)) &lt;&gt; '' AND SYSMIS(rollout_cost_per_b_user_usd)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_complaint_cost=(RTRIM(LTRIM(cost_per_excess_complaint_usd_raw)) &lt;&gt; '' AND SYSMIS(cost_per_excess_complaint_usd)).
+<span class="cm">* Create or overwrite a variable with a formula, row by row.</span>
+COMPUTE bad_limit=(RTRIM(LTRIM(complaint_uplift_limit_pp_raw)) &lt;&gt; '' AND SYSMIS(complaint_uplift_limit_pp)).
+COUNT malformed_fields=bad_purchase bad_complaint bad_purchase_domain bad_complaint_domain bad_satisfaction bad_goal bad_margin bad_rollout_cost bad_complaint_cost bad_limit (1).
+<span class="cm">* Collapse rows into group summaries (one row per group).</span>
+AGGREGATE
+ /OUTFILE=* MODE=ADDVARIABLES
+ /BREAK=
+ /malformed_any=MAX(malformed_fields).
+<span class="cm">* Set each variable's measurement level (nominal, ordinal, scale).</span>
+VARIABLE LEVEL group purchase complaint (NOMINAL).
+<span class="cm">* Set each variable's measurement level (nominal, ordinal, scale).</span>
+VARIABLE LEVEL satisfaction satisfaction_goal_points margin_per_extra_purchase_usd rollout_cost_per_b_user_usd cost_per_excess_complaint_usd complaint_uplift_limit_pp (SCALE).
+<span class="cm">* Run the pending transformations now.</span>
+EXECUTE.
+DISPLAY DICTIONARY.
+<span class="cm">* Frequency table: how many cases fall in each category.</span>
+FREQUENCIES VARIABLES=group purchase complaint satisfaction satisfaction_goal_points malformed_fields malformed_any.
+<span class="cm">* Every case must have malformed_any=0. If not, inspect the flagged raw fields, including nonbinary purchase or complaint values, and resolve the input before interpreting H1-H3.</span>
+TEMPORARY.
+<span class="cm">* Keep only the rows that meet the condition (others are deleted).</span>
+SELECT IF (malformed_fields &gt; 0).
+<span class="cm">* Print the listed variables row by row.</span>
+LIST VARIABLES=user_id group bad_purchase bad_complaint bad_purchase_domain bad_complaint_domain bad_satisfaction bad_goal bad_margin bad_rollout_cost bad_complaint_cost bad_limit.
+<span class="cm">* Confirm satisfaction_goal_points has one recorded value, 70, with no missing values, matching H1 TESTVAL before interpreting H1.</span></code></pre></details><p class="print-only notation">Just opened SPSS? Run the setup first (the <code>CD</code> line and H0; code in Part A).</p><h4>Before the timer · instructor demo</h4><p style="margin:4px 0">Follow along: in SPSS, run the <b>H3</b> block and leave <b>H3 Complaint by Group</b> open.</p><h4>SPSS block for this part · already in your syntax file</h4><p class="notation" style="margin:2px 0 6px">You do not type this: it is already in <code>S06P_SPSS.sps</code>, the one syntax file you use all session. Once per SPSS session, run the <code>CD</code> line and the H0 block first (setup code in Part A). Then press <b>Ctrl+F</b>, search <code>TITLE 'H3</code>, select from the first comment line down to the last period, and choose <b>Run › Selection</b>. Green lines start with <code>*</code>: they are comments that explain the command below them, and SPSS ignores them. Every command ends with a period.</p><pre class="spss"><code><span class="cm">* Lecture connection: Cross-Tool Reconciliation and SRM Audits .</span>
+<span class="cm">* Why: Inspect the complaint guardrail using its own observed-outcome table .</span>
+<span class="cm">* How: TEMPORARY and SELECT IF retain A/B users with observed binary complaint outcomes .</span>
+<span class="cm">* How: CROSSTABS reports complaint row counts and its own uncorrected Pearson statistic .</span>
+<span class="cm">* Read the result: Compare H3's Pearson row, df 1, with Part C B14; its table is distinct from H2's purchase table .</span>
+<span class="cm">* Watch out: Do not copy H2's chi-square into a caption about complaints .</span>
+<span class="cm">* Run: Run H0 first; select H3 from TITLE through the final CROSSTABS period .</span>
+<span class="cm">* Run: Choose Run &gt; Selection .</span>
+<span class="cm">* Run: Use Window to find H3 complaint Crosstabulation and its uncorrected Pearson row .</span>
+TITLE 'H3 Complaint by Group'.
+<span class="cm">* Make the next transformation apply to the next procedure only.</span>
+TEMPORARY.
+<span class="cm">* Keep only the rows that meet the condition (others are deleted).</span>
+SELECT IF (malformed_any=0 AND (group='A' OR group='B') AND (complaint=0 OR complaint=1)).
+<span class="cm">* Two-way table: counts and percentages for one variable by another.</span>
+CROSSTABS /TABLES=group BY complaint
+ /FORMAT=AVALUE TABLES /STATISTICS=CHISQ
+ /CELLS=COUNT ROW /COUNT ROUND CELL.</code></pre><h4>Open</h4><p style="margin:4px 0">Open <code>IN-CLASS_Lab Part C!B7</code>.</p><h4>Fill in the yellow cells</h4><div class="tablewrap"><table class="fx"><thead><tr><th class="n">#</th><th>Cell</th><th>Type this</th><th>In math</th><th style="text-align:right">Check</th></tr></thead><tbody><tr><td class="n">1</td><td class="cell">B9</td><td class="f"><code>=C7/B7</code></td><td class="m"><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mi>A</mi></msub><mo>=</mo><msub><mi>c</mi><mi>A</mi></msub><mi mathvariant="normal">/</mi><msub><mi>n</mi><mi>A</mi></msub></mrow><annotation encoding="application/x-tex"> r_A=c_A/n_A </annotation></semantics></math></span></span> <span class="plain">A complaint rate</span></td><td class="exp">2.0%</td></tr><tr><td class="n">2</td><td class="cell">B10</td><td class="f"><code>=D7/B8</code></td><td class="m"><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mi>B</mi></msub><mo>=</mo><msub><mi>c</mi><mi>B</mi></msub><mi mathvariant="normal">/</mi><msub><mi>n</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex"> r_B=c_B/n_B </annotation></semantics></math></span></span> <span class="plain">B complaint rate</span></td><td class="exp">8.0%</td></tr><tr><td class="n">3</td><td class="cell">B11</td><td class="f"><code>=B10-B9</code></td><td class="m"><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Δ</mi><mi>c</mi></msub><mo>=</mo><msub><mi>r</mi><mi>B</mi></msub><mo>−</mo><msub><mi>r</mi><mi>A</mi></msub></mrow><annotation encoding="application/x-tex"> \Delta_c=r_B-r_A </annotation></semantics></math></span></span> <span class="plain">percentage-point complaint gap</span></td><td class="exp">6.0%</td></tr><tr><td class="n">4</td><td class="cell">B13</td><td class="f"><code>=('IN-CLASS_Lab Part B'!D7-'IN-CLASS_Lab Part B'!C7)*INDEX(Checkout[margin_per_extra_purchase_usd],1)-COUNTIF(Checkout[group],"B")*INDEX(Checkout[rollout_cost_per_b_user_usd],1)-(D7-C7)*INDEX(Checkout[cost_per_excess_complaint_usd],1)</code></td><td class="m"><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msub><mi mathvariant="normal">Δ</mi><mi>x</mi></msub><mi>m</mi><mo>−</mo><msub><mi>n</mi><mi>B</mi></msub><msub><mi>c</mi><mi>r</mi></msub><mo>−</mo><mo stretchy="false">(</mo><msub><mi>c</mi><mi>B</mi></msub><mo>−</mo><msub><mi>c</mi><mi>A</mi></msub><mo stretchy="false">)</mo><msub><mi>c</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex"> V=\Delta_xm-n_Bc_r-(c_B-c_A)c_c </annotation></semantics></math></span></span> <span class="plain">experiment dollars, net</span></td><td class="exp">-$360</td></tr></tbody></table></div><div class="done">✅ <b>Done when:</b> Cell B13 displays -$360 and B15 contains a provisional evidence-based decision sentence. <b>Save.</b></div><div class="warn">⚠️ <b>Most common mistake:</b> Making the launch choice from the purchase p-value alone. A statistically detectable purchase difference does not waive the complaint limit or pay the rollout and complaint costs.</div><details><summary>Stuck? Three quick fixes</summary><ul><li><b>Complaint rates look too high.</b> B9 uses <code>C7/B7</code> and B10 uses <code>D7/B8</code>; format the fractions as percentages without multiplying by 100.</li><li><b>The complaint gap has the wrong direction.</b> B11 is <code>B10-B9</code>, so it is B minus A.</li><li><b>Net impact omits a cost.</b> In B13, include B rollout cost for every B user and excess complaint cost, as well as extra purchase margin.</li></ul></details><details><summary>Why check complaints even when purchases improve?</summary><p style="margin:0 0 12px">A checkout can make purchase easier while also creating service problems. A guardrail makes that trade-off visible before a wider launch. H3 tests whether complaint rates differ; B11 and B12 address the size of the gap against CedarCart’s limit. Neither check replaces the dollar calculation in B13.</p></details></div></section><section class="part" id="card-task-04"><div class="part-head"><div><div class="tag">sheet <code>IN-CLASS_Lab Part C</code> · answers email question 4</div><h3><span class="plabel">Take-home · </span>Does your CedarCart decision survive a careful recheck?</h3></div><span class="timer">⏱ 15 min</span></div><div class="handoff"><span class="pill">At home</span> → <span>work this card</span> → <span class="pill">Save locally</span></div><div class="part-body"><h4>What the session covered · Section 3 Practical Significance, Guardrail Metrics, and Cross-Tool Reconciliation</h4><div class="recap"><p>Start at <code>IN-CLASS_Lab Part C!B15</code>, where you left your provisional decision. This revisit is an <b>audit</b>, not a new experiment. Check the calculations and the words used to explain them. A p-value addresses a test claim. An interval addresses plausible effect sizes. A guardrail and net impact address the business decision.</p><ul><li><b>Part A:</b> Compare B10:B11 with H1, then check that B14 does not turn evidence from recorded respondents into a claim about every user.</li><li><b>Part B:</b> Compare the workbook test with H2’s uncorrected Pearson row; check the eligible-user denominators and explain the interval-to-hurdle comparison in B19.</li><li><b>Part C:</b> Compare B9:B11 and B13 with the supplied inputs, caption H3 in B19, and revise B15 in your own words.</li></ul><p>The classic error is to treat a software label, a small p-value, or an early choice as the whole answer. Use the visible diagnostic checks to catch formula problems. Then write three short sentences in B15: your decision, the purchase and complaint evidence with net impact, and a limitation. Do not change a sound decision merely because you are revisiting it. Do change an explanation that does not match its evidence.</p><div class="refs"><div class="ref"><div class="src">Course slides</div><div class="pg">Slides 53–74</div><div class="why">What practical significance and guardrails mean 54 · Net Incremental Economic Impact of Screen Variant B 55–57 · The mechanism linking practical thresholds and… 58 · CedarCart experimentation evidence and unit… 59 · Worked Cross-Tool Reconciliation on CedarCart Data 62 · SPSS Syntax for Two-by-Two Cross-Tabulation and… 64–67</div></div><div class="ref"><div class="src">Concise Toolkit</div><div class="pg">pp. 16–22</div><div class="why">CedarCart p. 18</div></div><div class="ref"><div class="src">Full Toolkit</div><div class="pg">pp. 45–68</div><div class="why">CedarCart p. 46</div></div></div></div><h4>The equations you are building</h4><div class="keyeq"><div class="notation"><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">p_t</annotation></semantics></math></span></span> = Part A’s two-sided benchmark p-value · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span></span> = Part B’s conversion statistic · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>χ</mi><mrow><mi mathvariant="normal">p</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">e</mi></mrow><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\chi^2_{\mathrm{purchase}}</annotation></semantics></math></span></span> = matching uncorrected Pearson purchase statistic · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="normal">Δ</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">\Delta_c</annotation></semantics></math></span></span> = Part C’s B-minus-A complaint-rate gap · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math></span></span> = Part C’s supplied complaint limit · <span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span></span> = Part C’s observed net dollar impact</div><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>p</mi><mi>t</mi></msub><mo>=</mo><mtext>Part&nbsp;A&nbsp;B11</mtext><mo separator="true">,</mo><mspace width="2em"></mspace><msubsup><mi>χ</mi><mrow><mi mathvariant="normal">p</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">e</mi></mrow><mn>2</mn></msubsup><mo>=</mo><msup><mi>z</mi><mn>2</mn></msup><mo>=</mo><mo stretchy="false">(</mo><mtext>Part&nbsp;B&nbsp;B11</mtext><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex"> p_t=\text{Part A B11},\qquad \chi^2_{\mathrm{purchase}}=z^2=(\text{Part B B11})^2 </annotation></semantics></math></span></span><span><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi mathvariant="normal">Δ</mi><mi>c</mi></msub><mo>=</mo><mtext>Part&nbsp;C&nbsp;B11</mtext><mo separator="true">,</mo><mspace width="2em"></mspace><mi>g</mi><mo>=</mo><mtext>Part&nbsp;C&nbsp;B12</mtext><mo separator="true">,</mo><mspace width="2em"></mspace><mi>V</mi><mo>=</mo><mtext>Part&nbsp;C&nbsp;B13</mtext></mrow><annotation encoding="application/x-tex"> \Delta_c=\text{Part C B11},\qquad g=\text{Part C B12},\qquad V=\text{Part C B13} </annotation></semantics></math></span></span></div><h4>Open</h4><p style="margin:4px 0">Open <code>IN-CLASS_Lab Part C!B15</code>.</p><h4>Fill in the yellow cells</h4><div class="tablewrap"><table class="fx"><thead><tr><th class="n">#</th><th>Cell</th><th>Build it</th><th>In math</th></tr></thead><tbody><tr><td class="n">1</td><td class="cell">B15<br>B19</td><td colspan="2"><b>B15:</b> Your decision, statistical evidence, guardrail comparison, economics, and one limitation<br><b>B19:</b> The H3 table names, observed complaint denominators, and uncorrected Pearson comparison you checked</td></tr></tbody></table></div><div class="done">✅ <b>Done when:</b> Review IN-CLASS_Lab Part A, IN-CLASS_Lab Part B and IN-CLASS_Lab Part C against the supplied formula explanations and visible diagnostic checks; retain your own written decision. <b>Save.</b></div><div class="warn">⚠️ <b>Most common mistake:</b> Replacing your written decision with a dropdown choice or a test result alone. B15 needs a reasoned decision that brings the purchase result, complaint guardrail, net impact, and a limitation together.</div><details><summary>Stuck? Three quick fixes</summary><ul><li><b>H2 and Excel appear to disagree.</b> Square Part B B11 and use H2’s uncorrected Pearson row for the comparison.</li><li><b>Your memo calls a rate gap a percent change.</b> Describe Part B’s effect bounds and Part C B11 in percentage points.</li><li><b>B15 has only a verdict.</b> Add the purchase evidence, the B11-to-B12 complaint check, B13 in dollars, and one limitation.</li></ul></details><details><summary>What does cross-tool agreement establish?</summary><p style="margin:0 0 12px">Agreement between the workbook and software is a useful check on arithmetic, denominators, and the selected test row. It does not prove that a survey represents all users or that an experiment will have the same effects after a wider rollout.</p></details></div></section><h2 id="submit">Finish</h2><section class="part" id="card-submit"><div class="part-head"><div><div class="tag">Ungraded practice</div><h3>Before you close the workbook</h3></div></div><div class="part-body"><h4 id="checklist">Tick every box <span class="cprog" id="cprog">0 of 17 done</span></h4><div class="checkwrap"><fieldset class="cgroup"><legend>Save your work</legend><label class="citem"><input type="checkbox"><span>Workbook saved under your own name (Start Here shows it), e.g. <code class="fn" data-lab="S06P" data-ext="xlsx">S06P_<wbr>FirstName_<wbr>LastName_<wbr>NetID.xlsx</code></span></label><label class="citem"><input type="checkbox"><span>Nothing to submit: this lab is ungraded practice</span></label></fieldset><fieldset class="cgroup"><legend>Part A · IN-CLASS_Lab Part A</legend><label class="citem"><input type="checkbox"><span>Cell B11 displays a p-value of 0.333.</span></label><label class="citem"><input type="checkbox"><span>B13 statement chosen</span></label><label class="citem"><input type="checkbox"><span>B14 written: Reason for your class choice</span></label><label class="citem"><input type="checkbox"><span>B17 captions SPSS <b>H1 Satisfaction Benchmark</b></span></label></fieldset><fieldset class="cgroup"><legend>Part B · IN-CLASS_Lab Part B</legend><label class="citem"><input type="checkbox"><span>Cell B11 displays z = 2.843 and B12 displays p = 0.0045.</span></label><label class="citem"><input type="checkbox"><span>B18 statement chosen</span></label><label class="citem"><input type="checkbox"><span>B19 written: Reason for your class choice</span></label><label class="citem"><input type="checkbox"><span>B22 captions SPSS <b>H2 Purchase by Group</b></span></label></fieldset><fieldset class="cgroup"><legend>Part C · IN-CLASS_Lab Part C</legend><label class="citem"><input type="checkbox"><span>Cell B13 displays -$360 and B15 contains a provisional evidence-based decision sentence.</span></label></fieldset><fieldset class="cgroup"><legend>Take-home · IN-CLASS_Lab Part C</legend><label class="citem"><input type="checkbox"><span>Review IN-CLASS_Lab Part A, IN-CLASS_Lab Part B and IN-CLASS_Lab Part C against the supplied formula explanations and visible diagnostic checks; retain your own written decision.</span></label><label class="citem"><input type="checkbox"><span>B15 written: Decision; replace after class</span></label><label class="citem"><input type="checkbox"><span>B19 written: H3 Viewer evidence caption</span></label></fieldset><fieldset class="cgroup"><legend>Whole workbook</legend><label class="citem"><input type="checkbox"><span>Every <i>Check your work</i> box reads “✓ Checked”</span></label><label class="citem"><input type="checkbox"><span>No <code>#NAME?</code>, <code>#VALUE!</code>, <code>#REF!</code>, <code>#NUM!</code> or <code>#DIV/0!</code> anywhere</span></label><label class="citem"><input type="checkbox"><span>Data sheets unchanged; formulas, not pasted values</span></label></fieldset></div></div></section><h2 id="appendix">Optional practice (not graded)</h2><div class="card"><p style="margin:0">Everything here is optional and ungraded. Topic 1 is "Reproduce the in-class parts" and stops at the in-class calculations. Excel uses the workbook; SPSS uses the supplied .sps file. The Python and R scripts read the supplied CSV files in the current folder. They do not choose a dropdown answer or write a take-home decision. The later topics ask new questions. Work in a copy when changing a workbook. Start when you finish the practice.</p><p style="margin:8px 0 0">Companion notebooks in your package:</p><ul><li><code>S06P_Python_Exploratory.ipynb</code></li><li><code>S06P_R_Exploratory.ipynb</code></li></ul></div><h3 class="topic" id="topic-1">Topic 1 · Reproduce the in-class parts <span class="lvl">Reproduce</span></h3><p class="notation" style="margin:0 0 6px">Same question in Excel → SPSS → Python → R.</p><div class="act"><div class="hd"><span class="tool">Excel</span><b>Trace Parts A, B, and C in the workbook</b> <span class="meta">Parts A, B, C</span></div><p style="margin:8px 0 0">Reopen <code>IN-CLASS_Lab Part A</code>, <code>IN-CLASS_Lab Part B</code>, and <code>IN-CLASS_Lab Part C</code>. Check the formula cells and visible diagnostics. Trace the inputs for Part C B13 without changing your submitted workbook.</p></div><div class="act"><div class="hd"><span class="tool">SPSS</span><b>Compare H1, H2, and H3 with the workbook</b> <span class="meta">Parts A, B, C</span></div><p style="margin:8px 0 0">Run the supplied <code>.sps</code> file and open its Viewer output. Match H1 to Part A, H2 to Part B, and H3 to Part C. For H2 and H3, read the uncorrected Pearson row when reconciling a two-proportion test.</p></div><div class="act"><div class="hd"><span class="tool">Python</span><b>Recompute the in-class tests and net impact</b> <span class="meta">Parts A, B, C</span></div><p style="margin:8px 0 0">Run this in the folder with the supplied CSV files. It finds the survey and checkout columns, prints in-class calculations only, and makes no launch choice. It expects one row per eligible checkout user and one score per recorded survey response.</p><button class="btn copy-code no-print" type="button" style="margin-top:8px">Copy code</button><pre class="spss"><code class="lang-python">import glob, math, re
+import pandas as pd
+
+files = [pd.read_csv(path) for path in sorted(glob.glob('*.csv'))]
+if not files:
+    raise FileNotFoundError('Run this in the folder with the supplied CSV files.')
+def key(s): return re.sub('[^a-z0-9]', '', str(s).lower())
+def column(df, names):
+    for c in df.columns:
+        if key(c) in names: return c
+    return None
+score_names = {'satisfaction', 'satisfactionscore', 'satisfactionpoints', 'satscore'}
+group_names = {'group', 'arm', 'variant', 'experimentgroup'}
+buy_names = {'purchase', 'purchased', 'converted', 'conversion', 'orderplaced'}
+complaint_names = {'complaint', 'complained', 'hascomplaint', 'complaintflag'}
+surveys = [(d, column(d, score_names)) for d in files if column(d, score_names)]
+checkouts = [(d, column(d, group_names), column(d, buy_names), column(d, complaint_names)) for d in files if column(d, group_names) and column(d, buy_names) and column(d, complaint_names)]
+if not surveys or not checkouts:
+    raise ValueError('Check the supplied CSV headers for satisfaction, group, purchase, and complaint columns.')
+survey, sc = surveys[0]
+checkout, gc, bc, cc = checkouts[0]
+scores = pd.to_numeric(survey[sc], errors='coerce').dropna()
+n = len(scores); mean = scores.mean(); sd = scores.std(ddof=1)
+if n &lt; 2: raise ValueError('At least two recorded satisfaction scores are needed.')
+t = (mean - 70) / (sd / math.sqrt(n))
+df = n - 1
+const = math.exp(math.lgamma((df+1)/2)-math.lgamma(df/2)) / math.sqrt(df*math.pi)
+def density(v): return const * (1 + v*v/df)**(-(df+1)/2)
+steps = 10000; h = abs(t)/steps
+area = h/3 * (density(0) + density(abs(t)) + 4*sum(density(j*h) for j in range(1, steps, 2)) + 2*sum(density(j*h) for j in range(2, steps, 2)))
+p_t = max(0.0, 1 - 2*area)
+print(f'Part A: n={n}, mean={mean:.3f}, SE={sd/math.sqrt(n):.3f}, t={t:.3f}, two-sided p={p_t:.4f}')
+arm = checkout[gc].astype(str).str.strip().str.upper()
+if not arm.isin(['A', 'B']).all(): raise ValueError('Checkout groups must be A or B.')
+def yes(series):
+    v = series.astype(str).str.strip().str.lower()
+    if not v.isin(['1','0','yes','no','y','n','true','false']).all():
+        raise ValueError('Purchase and complaint flags must be recorded for each eligible user.')
+    return v.isin(['1','yes','y','true'])
+buy = yes(checkout[bc]); complaint = yes(checkout[cc])
+na = (arm == 'A').sum(); nb = (arm == 'B').sum()
+xa = int(buy[arm == 'A'].sum()); xb = int(buy[arm == 'B'].sum())
+ca = int(complaint[arm == 'A'].sum()); cb = int(complaint[arm == 'B'].sum())
+pa, pb = xa/na, xb/nb
+pooled = (xa+xb)/(na+nb)
+se0 = math.sqrt(pooled*(1-pooled)*(1/na+1/nb))
+z = (pb-pa)/se0
+p_z = math.erfc(abs(z)/math.sqrt(2))
+se_effect = math.sqrt(pa*(1-pa)/na + pb*(1-pb)/nb)
+print(f'Part B: A {xa}/{na}, B {xb}/{nb}; pooled={pooled:.4f}; z={z:.3f}; p={p_z:.4f}')
+print(f'Part B: B-minus-A gap={pb-pa:.4f}; 95% interval=({pb-pa-1.96*se_effect:.4f}, {pb-pa+1.96*se_effect:.4f}); Pearson={z*z:.3f}')
+ra, rb = ca/na, cb/nb
+net = (xb-xa)*12 - nb*0.60 - (cb-ca)*25
+print(f'Part C: complaints A {ca}/{na}, B {cb}/{nb}; gap={rb-ra:.4f}; net=${net:.2f}')</code></pre></div><div class="act"><div class="hd"><span class="tool">R</span><b>Recompute the in-class tests and net impact</b> <span class="meta">Parts A, B, C</span></div><p style="margin:8px 0 0">This base R script reads the supplied CSV files in the current folder. It prints the in-class quantities only. It does not fill a dropdown or decide whether to launch.</p><button class="btn copy-code no-print" type="button" style="margin-top:8px">Copy code</button><pre class="spss"><code class="lang-r">paths &lt;- list.files(pattern = '\\.csv$', ignore.case = TRUE)
+if (!length(paths)) stop('Run this in the folder with the supplied CSV files.')
+files &lt;- lapply(paths, function(p) read.csv(p, check.names = FALSE, stringsAsFactors = FALSE))
+key &lt;- function(x) gsub('[^a-z0-9]', '', tolower(x))
+col &lt;- function(d, names) { hit &lt;- which(key(names(d)) %in% names); if (length(hit)) hit[1] else NA_integer_ }
+sn &lt;- c('satisfaction','satisfactionscore','satisfactionpoints','satscore')
+gn &lt;- c('group','arm','variant','experimentgroup')
+bn &lt;- c('purchase','purchased','converted','conversion','orderplaced')
+cn &lt;- c('complaint','complained','hascomplaint','complaintflag')
+si &lt;- which(vapply(files, function(d) !is.na(col(d,sn)), logical(1)))[1]
+ci &lt;- which(vapply(files, function(d) all(!is.na(c(col(d,gn),col(d,bn),col(d,cn)))), logical(1)))[1]
+if (is.na(si) || is.na(ci)) stop('Check CSV headers for satisfaction, group, purchase, and complaint.')
+survey &lt;- files[[si]]; checkout &lt;- files[[ci]]
+scores &lt;- suppressWarnings(as.numeric(survey[[col(survey,sn)]]))
+scores &lt;- scores[!is.na(scores)]; n &lt;- length(scores)
+if (n &lt; 2) stop('At least two recorded scores are needed.')
+se &lt;- sd(scores)/sqrt(n); t &lt;- (mean(scores)-70)/se
+cat(sprintf('Part A: n=%d, mean=%.3f, SE=%.3f, t=%.3f, two-sided p=%.4f\n', n, mean(scores), se, t, 2*pt(-abs(t), n-1)))
+arm &lt;- toupper(trimws(as.character(checkout[[col(checkout,gn)]])))
+if (!all(arm %in% c('A','B'))) stop('Checkout groups must be A or B.')
+yes &lt;- function(v) {
+  v &lt;- tolower(trimws(as.character(v)))
+  if (!all(v %in% c('1','0','yes','no','y','n','true','false'))) stop('Purchase and complaint flags must be recorded.')
+  v %in% c('1','yes','y','true')
+}
+buy &lt;- yes(checkout[[col(checkout,bn)]]); complaint &lt;- yes(checkout[[col(checkout,cn)]])
+na &lt;- sum(arm=='A'); nb &lt;- sum(arm=='B')
+xa &lt;- sum(buy[arm=='A']); xb &lt;- sum(buy[arm=='B'])
+ca &lt;- sum(complaint[arm=='A']); cb &lt;- sum(complaint[arm=='B'])
+pa &lt;- xa/na; pb &lt;- xb/nb; pooled &lt;- (xa+xb)/(na+nb)
+se0 &lt;- sqrt(pooled*(1-pooled)*(1/na+1/nb)); z &lt;- (pb-pa)/se0
+se.effect &lt;- sqrt(pa*(1-pa)/na + pb*(1-pb)/nb)
+cat(sprintf('Part B: A %d/%d, B %d/%d; pooled=%.4f; z=%.3f; p=%.4f\n', xa,na,xb,nb,pooled,z,2*pnorm(-abs(z))))
+cat(sprintf('Part B: gap=%.4f; 95%% interval=(%.4f, %.4f); Pearson=%.3f\n', pb-pa,pb-pa-1.96*se.effect,pb-pa+1.96*se.effect,z^2))
+net &lt;- (xb-xa)*12 - nb*0.60 - (cb-ca)*25
+cat(sprintf('Part C: complaints A %d/%d, B %d/%d; gap=%.4f; net=$%.2f\n', ca,na,cb,nb,cb/nb-ca/na,net))</code></pre></div><h3 class="topic" id="topic-2">Topic 2 · How precise is the satisfaction mean? <span class="lvl">Extend</span></h3><p class="notation" style="margin:0 0 6px">Same question in Excel → SPSS → Python → R.</p><div class="act"><div class="hd"><span class="tool">Excel</span><b>Add an interval for the recorded survey mean</b> <span class="meta">Parts A</span></div><p style="margin:8px 0 0">In a copy of Part A, calculate a 95% interval in spare cells with <code>=B8-T.INV.2T(0.05,B12)*B9</code> and <code>=B8+T.INV.2T(0.05,B12)*B9</code>. Compare its bounds with the goal in D7. Explain why this interval still does not make the respondents representative.</p></div><div class="act"><div class="hd"><span class="tool">SPSS</span><b>Read the H1 mean interval</b> <span class="meta">Parts A</span></div><p style="margin:8px 0 0">In the supplied <code>.sps</code> output, revisit H1’s one-sample tables. Locate the confidence interval for the mean difference from the goal. Add the goal back to each bound if you want bounds for the mean itself.</p></div><div class="act"><div class="hd"><span class="tool">Python</span><b>Bootstrap the recorded mean</b> <span class="meta">Parts A</span></div><p style="margin:8px 0 0">Resample the recorded survey scores to see how the sample mean moves. This is a precision exercise, not a cure for an unrepresentative survey.</p><button class="btn copy-code no-print" type="button" style="margin-top:8px">Copy code</button><pre class="spss"><code class="lang-python">import glob, re
+import numpy as np
+import pandas as pd
+
+def key(x): return re.sub('[^a-z0-9]', '', str(x).lower())
+names = {'satisfaction','satisfactionscore','satisfactionpoints','satscore'}
+scores = None
+for path in sorted(glob.glob('*.csv')):
+    d = pd.read_csv(path)
+    for c in d.columns:
+        if key(c) in names:
+            scores = pd.to_numeric(d[c], errors='coerce').dropna().to_numpy()
+            break
+    if scores is not None: break
+if scores is None or len(scores) &lt; 2: raise ValueError('Find the supplied CSV with recorded satisfaction scores.')
+rng = np.random.default_rng(2026)
+means = np.array([rng.choice(scores, size=len(scores), replace=True).mean() for _ in range(5000)])
+print('Recorded mean:', scores.mean(), '95% bootstrap interval:', np.percentile(means, [2.5, 97.5]))
+print('This interval does not establish that respondents represent all users.')</code></pre></div><div class="act"><div class="hd"><span class="tool">R</span><b>Bootstrap the recorded mean</b> <span class="meta">Parts A</span></div><p style="margin:8px 0 0">Use base R to resample the survey scores. Keep sampling precision separate from survey coverage.</p><button class="btn copy-code no-print" type="button" style="margin-top:8px">Copy code</button><pre class="spss"><code class="lang-r">key &lt;- function(x) gsub('[^a-z0-9]', '', tolower(x))
+namesWanted &lt;- c('satisfaction','satisfactionscore','satisfactionpoints','satscore')
+scores &lt;- NULL
+for (path in list.files(pattern='\\.csv$', ignore.case=TRUE)) {
+  d &lt;- read.csv(path, check.names=FALSE)
+  hit &lt;- which(key(names(d)) %in% namesWanted)
+  if (length(hit)) { scores &lt;- suppressWarnings(as.numeric(d[[hit[1]]])); scores &lt;- scores[!is.na(scores)]; break }
+}
+if (is.null(scores) || length(scores)&lt;2) stop('Find the supplied CSV with recorded satisfaction scores.')
+set.seed(2026)
+means &lt;- replicate(5000, mean(sample(scores, size=length(scores), replace=TRUE)))
+print(c(recorded.mean=mean(scores), quantile(means,c(.025,.975))))
+cat('This interval does not establish that respondents represent all users.\n')</code></pre></div><h3 class="topic" id="topic-3">Topic 3 · Are purchases and complaints associated within each arm? <span class="lvl">Extend</span></h3><p class="notation" style="margin:0 0 6px">Same question in Excel → SPSS → Python → R.</p><div class="act"><div class="hd"><span class="tool">Excel</span><b>Make two purchase-by-complaint tables</b> <span class="meta">Parts B, C</span></div><p style="margin:8px 0 0">In a copy, make a PivotTable from <code>Checkout</code>. Filter to A and place purchase and complaint flags on rows and columns; repeat for B. Show counts, not just percentages. For each two-by-two table, compare observed counts with counts expected from its row and column totals before using <code>CHISQ.TEST</code>.</p></div><div class="act"><div class="hd"><span class="tool">SPSS</span><b>Separate the two arm tables</b> <span class="meta">Parts B, C</span></div><p style="margin:8px 0 0">After running the supplied <code>.sps</code>, use the checkout data it opens. Split output by group, then run <code>CROSSTABS</code> with purchase by complaint, observed and expected counts, and Pearson chi-square. Turn Split File off afterward. An association within an arm does not establish its cause.</p></div><div class="act"><div class="hd"><span class="tool">Python</span><b>Inspect within-arm two-by-two tables</b> <span class="meta">Parts B, C</span></div><p style="margin:8px 0 0">This looks for a purchase–complaint association separately in A and B. It is not another estimate of the checkout treatment effect.</p><button class="btn copy-code no-print" type="button" style="margin-top:8px">Copy code</button><pre class="spss"><code class="lang-python">import glob, math, re
+import pandas as pd
+
+def key(x): return re.sub('[^a-z0-9]', '', str(x).lower())
+def find(d, options): return next((c for c in d.columns if key(c) in options), None)
+group = {'group','arm','variant','experimentgroup'}
+buy = {'purchase','purchased','converted','conversion','orderplaced'}
+complaint = {'complaint','complained','hascomplaint','complaintflag'}
+found = None
+for path in sorted(glob.glob('*.csv')):
+    d = pd.read_csv(path)
+    cols = [find(d, group),find(d, buy),find(d, complaint)]
+    if all(cols): found = (d, cols); break
+if found is None: raise ValueError('Find group, purchase, and complaint columns in the supplied CSV files.')
+d, (gc,bc,cc) = found
+for arm in ('A','B'):
+    part = d[d[gc].astype(str).str.strip().str.upper().eq(arm)]
+    table = pd.crosstab(part[bc].astype(str).str.lower(), part[cc].astype(str).str.lower())
+    print('\nArm',arm,'\n',table)
+    if table.shape != (2,2):
+        print('A two-by-two Pearson test needs both observed flag values.'); continue
+    obs = table.to_numpy(); expected = obs.sum(axis=1)[:,None]*obs.sum(axis=0)[None,:]/obs.sum()
+    if (expected == 0).any():
+        print('An expected cell is zero; do not calculate Pearson chi-square.'); continue
+    chi2 = ((obs-expected)**2/expected).sum()
+    print('Pearson chi-square:',chi2,'p:',math.erfc(math.sqrt(chi2/2)))
+print('Association within an arm does not establish cause.')</code></pre></div><div class="act"><div class="hd"><span class="tool">R</span><b>Inspect within-arm two-by-two tables</b> <span class="meta">Parts B, C</span></div><p style="margin:8px 0 0">Use a separate purchase-by-complaint table for each arm. Treat small expected counts as a reason to question the Pearson approximation.</p><button class="btn copy-code no-print" type="button" style="margin-top:8px">Copy code</button><pre class="spss"><code class="lang-r">key &lt;- function(x) gsub('[^a-z0-9]', '', tolower(x))
+find &lt;- function(d, choices) { hit &lt;- which(key(names(d)) %in% choices); if(length(hit)) hit[1] else NA_integer_ }
+gn &lt;- c('group','arm','variant','experimentgroup')
+bn &lt;- c('purchase','purchased','converted','conversion','orderplaced')
+cn &lt;- c('complaint','complained','hascomplaint','complaintflag')
+d &lt;- NULL
+for (path in list.files(pattern='\\.csv$', ignore.case=TRUE)) {
+  candidate &lt;- read.csv(path, check.names=FALSE, stringsAsFactors=FALSE)
+  if(all(!is.na(c(find(candidate,gn),find(candidate,bn),find(candidate,cn))))) { d &lt;- candidate; break }
+}
+if(is.null(d)) stop('Find group, purchase, and complaint columns in the supplied CSV files.')
+arm &lt;- toupper(trimws(as.character(d[[find(d,gn)]])))
+for (a in c('A','B')) {
+  rows &lt;- arm==a
+  tab &lt;- table(Purchase=d[[find(d,bn)]][rows], Complaint=d[[find(d,cn)]][rows])
+  cat('\nArm',a,'\n'); print(tab)
+  if(all(dim(tab)==c(2,2)) &amp;&amp; all(rowSums(tab)&gt;0) &amp;&amp; all(colSums(tab)&gt;0)) {
+    test &lt;- suppressWarnings(chisq.test(tab, correct=FALSE))
+    print(test$expected); print(test)
+  } else cat('A two-by-two Pearson test needs both observed flag values.\n')
+}
+cat('Association within an arm does not establish cause.\n')</code></pre></div><h3 class="topic" id="topic-4">Topic 4 · Was the intended assignment balance preserved? <span class="lvl">Extend</span></h3><p class="notation" style="margin:0 0 6px">Same question in Excel → SPSS → Python → R.</p><div class="act"><div class="hd"><span class="tool">Excel</span><b>Audit a planned equal split</b> <span class="meta">Parts B</span></div><p style="margin:8px 0 0">If the assignment plan specified equal arms, use Part B B7:B8 to find the expected count per arm: <code>(B7+B8)/2</code>. In a copy, calculate the sum of each arm’s squared observed-minus-expected gap divided by that expected count. Apply <code>CHISQ.DIST.RT</code> with one degree of freedom. This checks allocation balance, not purchase performance.</p></div><div class="act"><div class="hd"><span class="tool">SPSS</span><b>Check counts against the assignment plan</b> <span class="meta">Parts B</span></div><p style="margin:8px 0 0">Use the checkout dataset opened by the supplied <code>.sps</code>. First inspect group frequencies for missing or duplicate user records. If the documented plan was an equal split, compare the observed A and B counts with that plan using a one-sample chi-square goodness-of-fit test. Do not infer the plan from the observed counts.</p></div><div class="act"><div class="hd"><span class="tool">Python</span><b>Check a documented equal-allocation plan</b> <span class="meta">Parts B</span></div><p style="margin:8px 0 0">Use this only if the assignment plan called for equal A and B arms. This balance audit says nothing by itself about the purchase effect.</p><button class="btn copy-code no-print" type="button" style="margin-top:8px">Copy code</button><pre class="spss"><code class="lang-python">import glob, math, re
+import pandas as pd
+
+def key(x): return re.sub('[^a-z0-9]', '', str(x).lower())
+d = None; gc = None
+for path in sorted(glob.glob('*.csv')):
+    candidate = pd.read_csv(path)
+    names = {key(c):c for c in candidate.columns}
+    hit = next((names[x] for x in ('group','arm','variant','experimentgroup') if x in names), None)
+    if hit is not None: d, gc = candidate, hit; break
+if d is None: raise ValueError('Find the supplied checkout CSV with a group column.')
+arm = d[gc].astype(str).str.strip().str.upper()
+if not arm.isin(['A','B']).all(): raise ValueError('Inspect missing or unexpected assignment labels first.')
+a, b = int(arm.eq('A').sum()), int(arm.eq('B').sum())
+expected = (a+b)/2
+chi2 = (a-expected)**2/expected + (b-expected)**2/expected
+print('Eligible assignment counts:',a,b)
+print('Equal-split chi-square:',chi2,'p:',math.erfc(math.sqrt(chi2/2)))
+print('Use this check only if equal allocation was the documented plan.')</code></pre></div><div class="act"><div class="hd"><span class="tool">R</span><b>Check a documented equal-allocation plan</b> <span class="meta">Parts B</span></div><p style="margin:8px 0 0">Compare eligible-user arm counts with an equal split only if that was the assignment plan. This is an assignment audit, not an outcome test.</p><button class="btn copy-code no-print" type="button" style="margin-top:8px">Copy code</button><pre class="spss"><code class="lang-r">key &lt;- function(x) gsub('[^a-z0-9]', '', tolower(x))
+d &lt;- NULL; gc &lt;- NULL
+for(path in list.files(pattern='\\.csv$', ignore.case=TRUE)) {
+  candidate &lt;- read.csv(path, check.names=FALSE, stringsAsFactors=FALSE)
+  hit &lt;- which(key(names(candidate)) %in% c('group','arm','variant','experimentgroup'))
+  if(length(hit)) { d &lt;- candidate; gc &lt;- hit[1]; break }
+}
+if(is.null(d)) stop('Find the supplied checkout CSV with a group column.')
+arm &lt;- toupper(trimws(as.character(d[[gc]])))
+if(!all(arm %in% c('A','B'))) stop('Inspect missing or unexpected assignment labels first.')
+counts &lt;- table(factor(arm, levels=c('A','B')))
+print(counts)
+print(chisq.test(counts, p=c(.5,.5)))
+cat('Use this check only if equal allocation was the documented plan.\n')</code></pre></div><footer>S06P student guide · generated from the compiled workbook, session spine, slide deck and Toolkits</footer></div></div><script>
+window.addEventListener('beforeprint',()=>document.querySelectorAll('details').forEach(d=>d.open=true));
+document.addEventListener('DOMContentLoaded',()=>{
+ const f=document.getElementById('nm-first'),l=document.getElementById('nm-last'),n=document.getElementById('nm-netid');
+ const clean=v=>v.trim().replace(/\s+/g,'-').replace(/[^A-Za-z0-9\-]/g,'');
+ const upd=()=>{const a=clean(f.value)||'FirstName',b=clean(l.value)||'LastName',c0=clean(n.value.replace(/@.*/,''));const c=c0?c0.toLowerCase():'NetID';
+  document.querySelectorAll('code.fn').forEach(el=>el.innerHTML=`${el.dataset.lab}_<wbr>${a}_<wbr>${b}_<wbr>${c}.${el.dataset.ext}`);};
+ [f,l,n].forEach(i=>i&&i.addEventListener('input',upd));
+ // In-page links also work inside preview frames and LMS viewers that ignore #fragments.
+ document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a)return;
+  const t=document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1)));if(!t)return;
+  e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});try{history.replaceState(null,'','#'+t.id);}catch(_){}});
+ const links=[...document.querySelectorAll('.outline a')];
+ if('IntersectionObserver' in window&&links.length){const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));}});},{rootMargin:'-10% 0px -80% 0px'});
+  links.forEach(a=>{const t=document.getElementById(a.getAttribute('href').slice(1));if(t)io.observe(t);});}
+ const boxes=[...document.querySelectorAll('.citem input')];const key='checklist-'+document.body.dataset.lab;
+ let saved=[];try{saved=JSON.parse(localStorage.getItem(key)||'[]');}catch(e){}
+ boxes.forEach((b,i)=>{b.checked=!!saved[i];});
+ const prog=()=>{const d=boxes.filter(b=>b.checked).length;const el=document.getElementById('cprog');if(el)el.textContent=`${d} of ${boxes.length} done`;
+  try{localStorage.setItem(key,JSON.stringify(boxes.map(b=>b.checked)));}catch(e){}};
+ boxes.forEach(b=>b.addEventListener('change',prog));prog();
+ const btn=document.getElementById('copy-memo');
+ if(btn)btn.addEventListener('click',async()=>{const t=document.getElementById('memo-tpl').innerText;
+  try{await navigator.clipboard.writeText(t);btn.textContent='Copied';}catch(e){btn.textContent='Select and copy manually';}setTimeout(()=>btn.textContent='Copy template as text',2000);});
+ document.querySelectorAll('button.copy-code').forEach(b=>b.addEventListener('click',async()=>{
+  try{await navigator.clipboard.writeText(b.nextElementSibling.innerText);b.textContent='Copied';}catch(e){}setTimeout(()=>b.textContent='Copy code',1500);}));
+ let tries=0;const go=()=>{if(window.renderMathInElement){renderMathInElement(document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false,output:document.body.dataset.mathOutput||'htmlAndMathml'});document.body.dataset.mathReady='1';}else if(tries++<200)setTimeout(go,50);};go();
+});
+</script></body></html>

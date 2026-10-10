@@ -1,0 +1,39 @@
+TRANSCRIPCIÓN DE LA INTRODUCCIÓN EN AUDIO (LISTA PARA TTS)
+Curso: Quantitative Methods for Business Analysis
+Sesión: Semana 4: Riesgo condicional, valor esperado y simulación
+Conteo de palabras: 442 palabras
+================================================================================
+
+¡Hola! Te damos la bienvenida a la introducción para el curso Quantitative Methods for Business Analysis del Professor Ken Ezekwem, Sesión 4: Riesgo condicional, valor esperado y simulación. Preparémonos para la clase.
+
+Hoy nos enfocaremos en el riesgo condicional y la actualización bayesiana.
+
+[pause]
+
+En los negocios, los líderes reaccionan constantemente a señales de diagnóstico: una alerta de fraude en una tarjeta de crédito, un aumento en los tickets de soporte o una advertencia de mantenimiento de maquinaria. El error más común que cometen los gerentes es confundir la sensibilidad de una alerta con la probabilidad real del problema subyacente.
+
+[pause]
+
+Si el ochenta por ciento de los clientes que cancelan sus suscripciones había registrado antes un alto volumen de tickets de soporte, ¿tiene una cuenta con muchos tickets de soporte un ochenta por ciento de probabilidad de irse? La respuesta casi siempre es no. La probabilidad condicional nos enseña cómo actualizar el riesgo base al limitar nuestro análisis al grupo específico de cuentas que activaron la señal, considerando con cuidado el grupo más grande de cuentas saludables.
+
+Revisemos nuestro caso práctico con CloudFlow Analytics.
+
+[pause]
+
+CloudFlow monitorea una cohorte de mil cuentas de software empresarial. Históricamente, el doce por ciento de estas cuentas cancela su servicio en un ciclo de un año, lo que significa que ciento veinte cuentas se van y ochocientas ochenta cuentas renuevan.
+
+[pause]
+
+Para detectar a tiempo la insatisfacción de los clientes, CloudFlow configura una alerta automatizada para cualquier cuenta que registre más de cinco tickets de soporte. Entre las ciento veinte cuentas que cancelan, el ochenta por ciento activa esta alerta, lo que representa noventa y seis señales reales de alerta. Sin embargo, el veinte por ciento de las ochocientas ochenta cuentas que renuevan también registra un alto volumen de tickets porque están capacitando a nuevos equipos, lo que genera ciento setenta y seis falsas alarmas.
+
+[pause]
+
+Cuando una cuenta activa la alerta, ¿cuál es la probabilidad actualizada de que realmente cancele? Sumamos las noventa y seis cuentas que cancelan y las ciento setenta y seis cuentas que renuevan para obtener un total de doscientas setenta y dos cuentas marcadas. Dividir noventa y seis entre doscientas setenta y dos nos da un riesgo actualizado de cancelación del treinta y cinco punto veintinueve por ciento.
+
+[pause]
+
+La alerta casi triplica el riesgo base del doce por ciento a más del treinta y cinco por ciento, pero las cuentas saludables que renuevan aún representan casi el sesenta y cinco por ciento de todas las cuentas marcadas.
+
+Esta es la lección central. Una señal de diagnóstico aporta evidencia valiosa, pero no equivale a certeza. Como la población base de cuentas saludables es tan grande, las falsas alarmas suelen superar a los casos reales de riesgo. Quienes toman decisiones eficaces evalúan probabilidades condicionales en lugar de confundir una alerta con un resultado seguro.
+
+Esa es la introducción para el curso Quantitative Methods for Business Analysis del Professor Ken Ezekwem, Sesión 4. Trae a clase una pregunta y un ejemplo de riesgo condicional. En la próxima sesión hablaremos sobre muestreo, sesgo, intervalos de confianza y precisión. ¡Nos vemos en clase!

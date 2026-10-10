@@ -1,0 +1,39 @@
+TRANSCRIPCIÓN DE LA GUÍA DE AUDIO (LISTA PARA TTS)
+Curso: Quantitative Methods for Business Analysis
+Sesión: Semana 1 - Orientación; preparación; formulación de preguntas de negocio
+Recuento de palabras: 433 palabras
+================================================================================
+
+¡Hola! Te damos la bienvenida a la guía introductoria para el curso Quantitative Methods for Business Analysis del Professor Ken Ezekwem, Sesión 1: Orientación, preparación y formulación de preguntas de negocio. Vamos a prepararte para la clase.
+
+[pause]
+
+En este curso, tratamos el análisis cuantitativo como un proceso disciplinado de toma de decisiones, en lugar de un cálculo mecánico de software.
+
+[pause]
+
+Los datos brutos generan un valor organizacional auténtico solo cuando la evidencia empírica reduce de forma sistemática la incertidumbre sobre una decisión gerencial importante. El concepto más importante de la sesión de hoy es desglosar una solicitud analítica ambigua en cuatro niveles estructurales distintos: el problema de negocio, la decisión de los interesados, la pregunta analítica y la tarea mecánica de software. Abrir Microsoft Excel o IBM SPSS Statistics antes de definir quién toma la decisión, la acción pendiente y el límite de la evidencia es una trampa centrada en las herramientas que lleva a responder la pregunta equivocada.
+
+[pause]
+
+Para ver cómo funciona esta disciplina en la práctica, examinemos nuestro caso de estudio continuo, OmniRetail, un minorista por suscripción que gestiona 2.4 million de cuentas activas.
+
+[pause]
+
+La dirección ejecutiva observa un incremento trimestral del 14 percent en las cancelaciones. En respuesta, operaciones con clientes propone gastar 450,000 dollars al año para contratar a 40 representantes de atención al cliente de fin de semana, señalando directamente una acumulación de 4,200 tickets sin resolver el lunes por la mañana.
+
+[pause]
+
+Sin embargo, la verosimilitud no es prueba empírica. Una larga cola el lunes por la mañana no demuestra que los tickets se hayan enviado durante el fin de semana; podrían representar tareas pendientes del viernes, alertas de mantenimiento del domingo o respuestas automáticas de marketing. En lugar de abrir el software para hacer cálculos improvisados, un analista cuantitativo disciplinado construye una pregunta analítica delimitada: entre los suscriptores mensuales activos de United States durante los últimos doce meses, ¿está un ticket de soporte de fin de semana sin resolver asociado con una tasa de cancelación a 60 días al menos cinco percentage points más alta que los tickets resueltos entre semana?
+
+[pause]
+
+Observa el umbral de decisión predeterminado de cinco puntos porcentuales. Si nuestro análisis estadístico revela más adelante solo una diferencia de 0.3-percentage-point, esa pequeña diferencia podría alcanzar significancia estadística en millones de registros, pero solo ahorra 24,000 dollars en ingresos anuales por suscripciones. Comprometer un presupuesto operativo de 450,000-dollar para recuperar 24,000 dollars sería un desastre operativo.
+
+[pause]
+
+Aquí están las tres conclusiones clave para recordar. Primero, los datos nunca toman decisiones; los gerentes humanos responsables eligen acciones fundamentadas en la evidencia. Segundo, delimita siempre tu investigación con poblaciones explícitas, exclusiones, horizontes de observación y umbrales de acción predeterminados antes de manipular los datos. Tercero, los registros observacionales revelan asociaciones, no causalidad directa, así que ajusta el lenguaje de tus informes estrictamente a tu diseño de investigación.
+
+[pause]
+
+Esa es tu guía introductoria para el curso Quantitative Methods for Business Analysis del Professor Ken Ezekwem, Sesión 1. Trae a clase una pregunta y un ejemplo de formulación delimitada de preguntas. A continuación, hablaremos sobre KPIs, variables, nivel de detalle y crítica de gráficos e historias de datos. ¡Nos vemos en clase!
